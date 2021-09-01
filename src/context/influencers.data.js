@@ -20,7 +20,7 @@ const INFLUENCER_DATA = [
         name: 'Selena Gomez',
         followers: 257,
         imageUrl: 'https://i.ibb.co/2gsmWzf/Selena-Gomez-models-bikini-for-her-friends-line-La-Mariette.png',
-        id: 2,
+        id: 3,
         linkUrl: 'influencer/selenagomez'
       },
       {
@@ -28,7 +28,7 @@ const INFLUENCER_DATA = [
         name: 'Kim Kardashian',
         followers: 249,
         imageUrl: 'https://i.ibb.co/L0kfCkz/Kim-Kardashian-wedding-ringhttps-www-instagram-com-p-CJq781-MA-M1-Credit-Kim-Kardashian-Instagram.jpg',
-        id: 2,
+        id: 4,
         linkUrl: 'influencer/kimkardashian'
       },
       {
@@ -36,7 +36,7 @@ const INFLUENCER_DATA = [
         name: 'Beyoncé',
         followers: 204,
         imageUrl: 'https://i.ibb.co/GRsrX87/longform-original-15836-1410955737-23.jpg',
-        id: 2,
+        id: 5,
         linkUrl: 'influencer/beyonce'
       },
       {
@@ -44,7 +44,7 @@ const INFLUENCER_DATA = [
         name: 'Kendall Jenner',
         followers: 263,
         imageUrl: 'https://i.ibb.co/cy6JThj/2127418-kendall-1577699033.jpg',
-        id: 2,
+        id: 6,
         linkUrl: 'influencer/kendalljenner'
       }        
   ];

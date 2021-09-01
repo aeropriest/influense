@@ -1,8 +1,13 @@
+import React from 'react'
 
-const HomePage = () => {
-    return(
-        <h1>Big Background Shoule Be Here</h1>
-    )
-}
+import InfluencerComponent from './../components/influencer/influencer.component'
+
+import './homepage.styles.scss'
+
+const HomePage = () => (
+  <div className='homepage'>
+    <InfluencerComponent />
+  </div>
+)
 
 export default HomePage
