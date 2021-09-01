@@ -1,0 +1,65 @@
+.celebrity-hero-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
+    url("https://wallpaperaccess.com/full/1484671.jpg");
+}
+
+.celebrity-card-background {
+  width: 100;
+  height: 100;
+  background-size: cover;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
+    url("https://wallpaperaccess.com/full/1484671.jpg");
+}
+
+.heading-text {
+  font-family: "HelveticaNeue-CondensedBold";
+  font-size: 3.8vw;
+  text-transform: capitalize;
+  color: var(--main);
+  letter-spacing: -1.5px;
+}
+
+.small-text {
+  font-family: "HelveticaNeue-Light";
+  font-size: 1vw;
+  text-transform: capitalize;
+  color: var(--main);
+  letter-spacing: -0.5px;
+}
+
+.button {
+  font-family: "HelveticaNeue-Bold";
+  background-color: var(--theme);
+  border: none;
+  color: var(--main);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1vw;
+  letter-spacing: -1.5px;
+}
+
+.wrapper .item {
+  min-width: 110px;
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+  background-color: #dddd;
+  border: 1px solid #ffffff;
+}
+.bid-button {
+  border-radius: 2.5vw;
+  width: 8vw;
+  height: 2.5vw;
+}
+.share-button {
+  border-radius: 10px;
+  width: 2.5vw;
+  height: 2.5vw;
+}
