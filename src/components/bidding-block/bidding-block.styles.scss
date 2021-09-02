@@ -1,6 +1,6 @@
 .bidding-container {
   margin-left: 80vw;
-  margin-top: 20vh;
+  margin-top: 10vh;
   text-align: right;
   float: right;
   margin-left: auto;
@@ -42,4 +42,12 @@
   text-transform: capitalize;
   color: var(--main);
   letter-spacing: -0.5px;
+}
+
+.ethereum-icon {
+  height: 50px;
+}
+
+.clock-icon {
+  height: 20px;
 }

@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom'
 
 import './header-component.scss'
 import { ReactComponent as SearchIcon } from './../../assets/images/search-icon.svg'
+import { ReactComponent as DropMenu } from './../../assets/images/drop-down.svg'
+import { ReactComponent as MainMenu } from './../../assets/images/main-menu.svg'
+import { ReactComponent as UserIcon } from './../../assets/images/user-icon.svg'
 
 const Header = () => {
-    const style = {
-        zIndex: '100'
-    }    
     return(
             <div className='header'>
-                <h1>this is the header</h1>
-                <SearchIcon className='logo' />
+                <MainMenu className='main-menu'/>
+                <div className='options'>
+                    <SearchIcon className='option' />
+                    <DropMenu className='option'/>
+                    <UserIcon className='option'/>
+                </div>
             </div>
     )
 }
