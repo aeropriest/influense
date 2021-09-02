@@ -1,17 +1,17 @@
 import { useContext } from 'react'
-import InfluencerContext from '../../context/influencer.context'
-import InfluencerItem from '../influencer-item/influencer-item.component'
+import CelebrityContext from '../../context/Celebrity.context'
+import CelebrityItem from '../Celebrity-item/Celebrity-item.component'
 
-import './influencer.styles.scss'
+import './Celebrity.styles.scss'
 
-const InfluencerComponent = () => {
-  const influencers = useContext(InfluencerContext)
+const CelebrityComponent = () => {
+  const Celebrities = useContext(CelebrityContext)
 
   return (<div className='directory-menu'>
-    {influencers.map(({ id, ...otherSectionProps }) => (
-      <InfluencerItem key={id} {...otherSectionProps} />
+    {Celebrities.map(({ id, ...otherSectionProps }) => (
+      <CelebrityItem key={id} {...otherSectionProps} />
     ))}
   </div>
 )}
 
-export default InfluencerComponent
+export default CelebrityComponent
