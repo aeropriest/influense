@@ -1,0 +1,52 @@
+.bidding-container {
+  margin-top: 15vh;
+  text-align: right;
+  float: right;
+  margin-left: auto;
+  margin-right: 3vw;
+}
+
+.button {
+  font-family: "HelveticaNeue-Bold";
+  background-color: var(--theme);
+  border: none;
+  color: var(--theme);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: -0.5px;
+}
+
+.bid-button {
+  border-radius: 2.5vw;
+  width: 15vw;
+  height: 3vw;
+  font-size: 1.5vh;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  margin-top: 1vh;
+}
+
+.small-text1 {
+  font-family: "HelveticaNeue-Light";
+  font-size: 1.2vw;
+  color: var(--main);
+  letter-spacing: 0px;
+}
+
+.heading-text1 {
+  font-family: "HelveticaNeue-CondensedBold";
+  font-size: 3.8vw;
+  text-transform: capitalize;
+  color: var(--main);
+  letter-spacing: -0.5px;
+}
+
+.ethereum-icon {
+  height: 50px;
+}
+
+.clock-icon {
+  height: 20px;
+}

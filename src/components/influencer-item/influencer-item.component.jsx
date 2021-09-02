@@ -1,11 +1,11 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
-import './influencer-item.styles.scss'
+import './Celebrity-item.styles.scss'
 
-const InfluencerItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
+const CelebrityItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <div
-    className={`${size} influencer-item`}
+    className={`${size} Celebrity-item`}
     onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
     <div
@@ -21,4 +21,4 @@ const InfluencerItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   </div>
 )
 
-export default InfluencerItem
+export default CelebrityItem

@@ -1,0 +1,18 @@
+<svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="44" cy="44" r="44" fill="white"/>
+<g opacity="0.6">
+<path opacity="0.6" d="M44.2772 36.1842L26 44.5612L44.2772 55.4434L62.5472 44.5612L44.2772 36.1842Z" fill="black"/>
+</g>
+<g opacity="0.45">
+<path opacity="0.45" d="M26 44.5611L44.2772 55.4432V14L26 44.5611Z" fill="black"/>
+</g>
+<g opacity="0.8">
+<path opacity="0.8" d="M44.2773 14V55.4432L62.5473 44.5611L44.2773 14Z" fill="black"/>
+</g>
+<g opacity="0.45">
+<path opacity="0.45" d="M26 48.0509L44.2772 74V58.933L26 48.0509Z" fill="black"/>
+</g>
+<g opacity="0.8">
+<path opacity="0.8" d="M44.2773 58.933V74L62.5617 48.0509L44.2773 58.933Z" fill="black"/>
+</g>
+</svg>
