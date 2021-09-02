@@ -17,8 +17,8 @@ const HeroImage = () => {
             <div className="heading-text">{name}</div>
             <div className="small-text">@{handle}</div>
             <div className="small-text">{followers}M followers</div>            
-            <BiddingBlock Celebrity = {Celebrities[1]}/>
-            <CelebritiesStrip style={{marginTop: '50vh', marginLeft: '-80vw', width: '100vw'}}/>
+            <BiddingBlock highestBid = {highestBid}/>
+            <CelebritiesStrip/>
         </div>
     )
 }

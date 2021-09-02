@@ -2,8 +2,7 @@ import './bidding-block.styles.scss'
 import { ReactComponent as ClockIcon } from './../../assets/images/clock-icon.svg'
 import { ReactComponent as EthereumIcon } from './../../assets/images/etherium.svg'
 
-const BiddingBlock = ({Celebrity}) => {
-    const { handle, name, followers, imageUrl, highestBid } = Celebrity
+const BiddingBlock = ({highestBid, timeleft}) => {
     return(  
         <div className='bidding-container'>        
             <div className="small-text1">Highest Bid</div>                          

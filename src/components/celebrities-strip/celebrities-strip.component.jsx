@@ -28,6 +28,14 @@ const CelebritiesStrip = () => {
         />
       ))
     }
+    {
+      celebrities.map((celebrity) => (
+        <CelebrityCard
+          imageUrl={celebrity.imageUrl}
+          handle={celebrity.handle}
+        />
+      ))
+    }    
     </ScrollMenu>     
    </div>
   )
