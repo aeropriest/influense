@@ -5,10 +5,14 @@ import './hero-image.styles.scss'
 
 const HeroImage = () => {
     const influencers = useContext(InfluencerContext)    
-    const { title, imageUrl, size, history, linkUrl, match } = influencers[1]
+    const { handle, name, followers, imageUrl } = influencers[1]
+    console.log(handle)
     return(
-        <div className='celebrity-hero-background' style={{ backgroundImage: `url(${imageUrl})` }}>
-            @{title}
+        <div className='celebrity-hero-background' style={{ '--img': `url(${imageUrl})` }}>
+            <div className="heading-text">{name}</div>
+            <div className="small-text">@{handle}</div>
+            <div className="small-text">{followers}M followers</div>
+            <button className="bid-button">BID NOW</button>
         </div>
     )
 }

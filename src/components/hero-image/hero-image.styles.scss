@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+:root {
+  --main: #ffffff;
+  --theme: #ff0000;
+}
+
+.body {
+  font-family: Oxygen, sans-serif;
+  margin: 2rem;
+}
+
 .celebrity-hero-background {
   position: fixed;
   top: 0;
@@ -6,7 +17,7 @@
   height: 100%;
   background-size: cover;
   background-image: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
-    url("https://wallpaperaccess.com/full/1484671.jpg");
+    var(--img);
 }
 
 .celebrity-card-background {
@@ -23,26 +34,35 @@
   text-transform: capitalize;
   color: var(--main);
   letter-spacing: -1.5px;
+  margin-left: 3vw;
+  vertical-align: top;
+  margin-top: 30vh;
+  text-align: left;
 }
 
 .small-text {
   font-family: "HelveticaNeue-Light";
   font-size: 1vw;
-  text-transform: capitalize;
+  text-transform: lowercase;
   color: var(--main);
-  letter-spacing: -0.5px;
+  letter-spacing: 0px;
+  margin-left: 3vw;
+  vertical-align: top;
+  margin-top: 0.5vh;
+  text-align: left;
 }
 
 .button {
   font-family: "HelveticaNeue-Bold";
   background-color: var(--theme);
   border: none;
-  color: var(--main);
+  color: var(--theme);
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 1vw;
   letter-spacing: -1.5px;
+  margin-right: 3vw;
 }
 
 .wrapper .item {
@@ -57,6 +77,9 @@
   border-radius: 2.5vw;
   width: 8vw;
   height: 2.5vw;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
 }
 .share-button {
   border-radius: 10px;

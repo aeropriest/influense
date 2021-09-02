@@ -1,48 +1,60 @@
 const INFLUENCER_DATA = [
     {
-      title: 'arianagrande',
+      handle: 'arianagrande',
       name: 'Ariana Grande',
       followers: 263,
+      highestBid: 8.0,
+      timeLeft: 29288,
       imageUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
       id: 1,
       linkUrl: 'influencer/arianagrande'
     },
     {
-      title: 'kyliejenner',
+      handle: 'kyliejenner',
       name: 'Kylie Jenner',
       followers: 263,
-      imageUrl: 'https://i.ibb.co/7tYx7M2/capture-d-e-cran-2019-07-15-a-12-17-41-pm-1563207477.png',
+      highestBid: 8.0,
+      timeLeft: 29288,
+      imageUrl: 'https://i.pinimg.com/originals/86/5f/b2/865fb2a5589c3dbb3cfd58f5762d1e0f.jpg',
       id: 2,
       linkUrl: 'influencer/kyliejenner'
     },
     {
-        title: 'selenagomez',
+        handle: 'selenagomez',
         name: 'Selena Gomez',
         followers: 257,
+        highestBid: 8.0,
+        timeLeft: 29288,
         imageUrl: 'https://i.ibb.co/2gsmWzf/Selena-Gomez-models-bikini-for-her-friends-line-La-Mariette.png',
         id: 3,
         linkUrl: 'influencer/selenagomez'
       },
       {
-        title: 'kimkardashian',
+        handle: 'kimkardashian',
         name: 'Kim Kardashian',
         followers: 249,
+        highestBid: 8.0,
+        timeLeft: 29288,
         imageUrl: 'https://i.ibb.co/L0kfCkz/Kim-Kardashian-wedding-ringhttps-www-instagram-com-p-CJq781-MA-M1-Credit-Kim-Kardashian-Instagram.jpg',
         id: 4,
         linkUrl: 'influencer/kimkardashian'
       },
       {
-        title: 'beyonce',
+        handle: 'beyonce',
         name: 'Beyoncé',
         followers: 204,
+        highestBid: 8.0,
+        timeLeft: 29288,  
         imageUrl: 'https://i.ibb.co/GRsrX87/longform-original-15836-1410955737-23.jpg',
         id: 5,
         linkUrl: 'influencer/beyonce'
       },
       {
-        title: 'kendalljenner',
+        handle: 'kendalljenner',
         name: 'Kendall Jenner',
         followers: 263,
+        highestBid: 8.0,
+        timeLeft: 29288,  
         imageUrl: 'https://i.ibb.co/cy6JThj/2127418-kendall-1577699033.jpg',
         id: 6,
         linkUrl: 'influencer/kendalljenner'
@@ -56,7 +68,7 @@ const INFLUENCER_DATA = [
 const SHOP_DATA = {
     Lele_Pons: {
       id: 1,
-      title: 'Lele Pons',
+      handle: 'Lele Pons',
       routeName: 'lele_pons',
       followers: 44,
       items: [
@@ -124,7 +136,7 @@ const SHOP_DATA = {
     },
     Amanda_Cerny: {
       id: 2,
-      title: 'Amanda Cerny',
+      handle: 'Amanda Cerny',
       routeName: 'amanda_cerny',
       followers: 25,
       items: [
@@ -180,7 +192,7 @@ const SHOP_DATA = {
     },
     jackets: {
       id: 3,
-      title: 'Jackets',
+      handle: 'Jackets',
       routeName: 'jackets',
       items: [
         {
@@ -217,7 +229,7 @@ const SHOP_DATA = {
     },
     womens: {
       id: 4,
-      title: 'Womens',
+      handle: 'Womens',
       routeName: 'womens',
       items: [
         {
@@ -266,7 +278,7 @@ const SHOP_DATA = {
     },
     mens: {
       id: 5,
-      title: 'Mens',
+      handle: 'Mens',
       routeName: 'mens',
       items: [
         {
