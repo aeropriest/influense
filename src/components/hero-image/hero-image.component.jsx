@@ -7,12 +7,15 @@ const HeroImage = () => {
     const influencers = useContext(InfluencerContext)    
     const { handle, name, followers, imageUrl, highestBid } = influencers[1]
     console.log(handle)
+    const style = {
+        zIndex: '1'
+    }    
     return(
         <div className='celebrity-hero-background' style={{ '--img': `url(${imageUrl})` }}>
             <div className="heading-text">{name}</div>
             <div className="small-text">@{handle}</div>
             <div className="small-text">{followers}M followers</div>            
-            <BiddingBlock/>
+            <BiddingBlock influencer = {influencers[1]}/>
         </div>
     )
 }

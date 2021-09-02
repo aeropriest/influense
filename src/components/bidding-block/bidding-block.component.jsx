@@ -1,11 +1,14 @@
 
 import './bidding-block.styles.scss'
 
-const BiddingBlock = () => {
+const BiddingBlock = ({influencer}) => {
+    const { handle, name, followers, imageUrl, highestBid } = influencer
     return(  
-        <div>
-        <div className="small-text">M followers</div>            
-        <button className="button bid-button" style={{marginLeft: '80vw', marginTop: '1.5vh'}}>BID NOW !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>     
+        <div className='bidding-container'>        
+            <div className="small-text1">Highest Bid</div>                          
+            <div className="heading-text1">{highestBid/100} ETH</div>  
+            <div className="small-text1"><b>8</b> h <b>8</b> m left</div>                          
+            <button className="button bid-button">BID NOW !</button> 
         </div>
         )    
 }

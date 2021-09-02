@@ -1,3 +1,12 @@
+.bidding-container {
+  margin-left: 80vw;
+  margin-top: 20vh;
+  text-align: right;
+  float: right;
+  margin-left: auto;
+  margin-right: 3vw;
+}
+
 .button {
   font-family: "HelveticaNeue-Bold";
   background-color: var(--theme);
@@ -6,8 +15,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  letter-spacing: -1.5px;
-  margin-right: 3vw;
+  letter-spacing: -0.5px;
 }
 
 .bid-button {
@@ -18,6 +26,20 @@
   background-color: #ff0000;
   color: #ffffff;
   border: none;
-  margin-top: 0vh;
-  margin-left: 0vw;
+  margin-top: 1vh;
+}
+
+.small-text1 {
+  font-family: "HelveticaNeue-Light";
+  font-size: 1.2vw;
+  color: var(--main);
+  letter-spacing: 0px;
+}
+
+.heading-text1 {
+  font-family: "HelveticaNeue-CondensedBold";
+  font-size: 3.8vw;
+  text-transform: capitalize;
+  color: var(--main);
+  letter-spacing: -0.5px;
 }
