@@ -8,6 +8,7 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import './celebrity-image-list.styles.scss'
 import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
+import { CurrentCelebrityContext } from '../../context/CurrentCelebrityContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +43,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 export default function CelebrityImageList() {
+  const celebrity = useContext(CurrentCelebrityContext)
   const celebs = useContext(CelebrityDataContext)    
+
   const classes = useStyles();
   const [state, setState] = useState({
     raised:false,
@@ -59,9 +63,19 @@ export default function CelebrityImageList() {
             onMouseOver={()=>setState({ raised: true, shadow:3})} 
             onMouseOut={()=>setState({ raised:false, shadow:1 })} 
             raised={state.raised} zdepth={state.shadow}
+            onClick={() => {
+               console.log('item clicked')
+               console.log(celeb)
+               console.log(celebrity)
+               celebrity.handle = celeb.handle
+               celebrity.followers = celeb.followers
+               celebrity.imageUrl = celeb.imageUrl
+               celebrity.name = celeb.name
+               celebrity.highestBid = celeb.highestBid
 
-            onClick={() => { alert(celeb.handle) }}            
-          >
+               console.log('after')
+               console.log(celebrity)
+            }}>                                
             <img
               src={`${celeb.imageUrl}?w=248&fit=crop&auto=format`}
               srcSet={`${celeb.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}

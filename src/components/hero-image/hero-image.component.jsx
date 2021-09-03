@@ -1,13 +1,16 @@
 import { useContext } from 'react'
-import CelebrityContext from '../../context/celebrities.context'
-import BiddingBlock from '../bidding-block/bidding-block.component'
 import Header from '../header/header-component'
+import { CurrentCelebrityContext } from '../../context/CurrentCelebrityContext'
+import { CelebrityConsumer } from '../../context/CurrentCelebrityContext'
+import BiddingBlock from '../../components/bidding-block/bidding-block.component'
 import './hero-image.styles.scss'
 
 
 const HeroImage = () => {
-    const Celebrities = useContext(CelebrityContext)    
-    const { handle, name, followers, imageUrl, highestBid } = Celebrities[1]
+    const celebrity = useContext(CurrentCelebrityContext)
+    console.log('data from contect')
+    console.log(celebrity)
+    const { handle, name, followers, highestBid, timeLeft, imageUrl } = celebrity
     console.log(handle)
     return(
         <div className='celebrity-hero-background' style={{ '--img': `url(${imageUrl})` }}>
