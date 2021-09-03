@@ -1,73 +1,13 @@
-const CELEBRITY_DATA = [
-  {
-    handle: 'arianagrande',
-    name: 'Ariana Grande',
-    followers: 263,
-    highestBid: 8.0,
-    timeLeft: 29288,
-    imageUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
-    id: 1,
-    linkUrl: 'Celebrity/arianagrande'
-  },
-  {
-    handle: 'kyliejenner',
-    name: 'Kylie Jenner',
-    followers: 263,
-    highestBid: 8.0,
-    timeLeft: 29288,
-    imageUrl: 'https://i.pinimg.com/originals/86/5f/b2/865fb2a5589c3dbb3cfd58f5762d1e0f.jpg',
-    id: 2,
-    linkUrl: 'Celebrity/kyliejenner'
-  },
-  {
-      handle: 'selenagomez',
-      name: 'Selena Gomez',
-      followers: 257,
-      highestBid: 8.0,
-      timeLeft: 29288,
-      imageUrl: 'https://i.ibb.co/2gsmWzf/Selena-Gomez-models-bikini-for-her-friends-line-La-Mariette.png',
-      id: 3,
-      linkUrl: 'Celebrity/selenagomez'
-    },
-    {
-      handle: 'kimkardashian',
-      name: 'Kim Kardashian',
-      followers: 249,
-      highestBid: 8.0,
-      timeLeft: 29288,
-      imageUrl: 'https://i.ibb.co/L0kfCkz/Kim-Kardashian-wedding-ringhttps-www-instagram-com-p-CJq781-MA-M1-Credit-Kim-Kardashian-Instagram.jpg',
-      id: 4,
-      linkUrl: 'Celebrity/kimkardashian'
-    },
-    {
-      handle: 'beyonce',
-      name: 'Beyoncé',
-      followers: 204,
-      highestBid: 8.0,
-      timeLeft: 29288,  
-      imageUrl: 'https://i.ibb.co/GRsrX87/longform-original-15836-1410955737-23.jpg',
-      id: 5,
-      linkUrl: 'Celebrity/beyonce'
-    },
-    {
-      handle: 'kendalljenner',
-      name: 'Kendall Jenner',
-      followers: 263,
-      highestBid: 8.0,
-      timeLeft: 29288,  
-      imageUrl: 'https://i.ibb.co/cy6JThj/2127418-kendall-1577699033.jpg',
-      id: 6,
-      linkUrl: 'Celebrity/kendalljenner'
-    },
+const INFLUENCER_DATA = [
     {
       handle: 'arianagrande',
       name: 'Ariana Grande',
       followers: 263,
-      highestBid: 8.0,
-      timeLeft: 29288,
+      highestBid: 8.0, // in ETH
+      timeLeft: 29288, // in seconds
       imageUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
-      id: 7,
-      linkUrl: 'Celebrity/arianagrande'
+      id: 1,
+      linkUrl: 'influencer/arianagrande'
     },
     {
       handle: 'kyliejenner',
@@ -76,8 +16,8 @@ const CELEBRITY_DATA = [
       highestBid: 8.0,
       timeLeft: 29288,
       imageUrl: 'https://i.pinimg.com/originals/86/5f/b2/865fb2a5589c3dbb3cfd58f5762d1e0f.jpg',
-      id: 8,
-      linkUrl: 'Celebrity/kyliejenner'
+      id: 2,
+      linkUrl: 'influencer/kyliejenner'
     },
     {
         handle: 'selenagomez',
@@ -86,8 +26,8 @@ const CELEBRITY_DATA = [
         highestBid: 8.0,
         timeLeft: 29288,
         imageUrl: 'https://i.ibb.co/2gsmWzf/Selena-Gomez-models-bikini-for-her-friends-line-La-Mariette.png',
-        id: 9,
-        linkUrl: 'Celebrity/selenagomez'
+        id: 3,
+        linkUrl: 'influencer/selenagomez'
       },
       {
         handle: 'kimkardashian',
@@ -96,8 +36,8 @@ const CELEBRITY_DATA = [
         highestBid: 8.0,
         timeLeft: 29288,
         imageUrl: 'https://i.ibb.co/L0kfCkz/Kim-Kardashian-wedding-ringhttps-www-instagram-com-p-CJq781-MA-M1-Credit-Kim-Kardashian-Instagram.jpg',
-        id: 10,
-        linkUrl: 'Celebrity/kimkardashian'
+        id: 4,
+        linkUrl: 'influencer/kimkardashian'
       },
       {
         handle: 'beyonce',
@@ -106,8 +46,8 @@ const CELEBRITY_DATA = [
         highestBid: 8.0,
         timeLeft: 29288,  
         imageUrl: 'https://i.ibb.co/GRsrX87/longform-original-15836-1410955737-23.jpg',
-        id: 11,
-        linkUrl: 'Celebrity/beyonce'
+        id: 5,
+        linkUrl: 'influencer/beyonce'
       },
       {
         handle: 'kendalljenner',
@@ -116,73 +56,12 @@ const CELEBRITY_DATA = [
         highestBid: 8.0,
         timeLeft: 29288,  
         imageUrl: 'https://i.ibb.co/cy6JThj/2127418-kendall-1577699033.jpg',
-        id: 12,
-        linkUrl: 'Celebrity/kendalljenner'
-      },
-      {
-          handle: 'arianagrande',
-          name: 'Ariana Grande',
-          followers: 263,
-          highestBid: 8.0,
-          timeLeft: 29288,
-          imageUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
-          id: 13,
-          linkUrl: 'Celebrity/arianagrande'
-        },
-        {
-          handle: 'kyliejenner',
-          name: 'Kylie Jenner',
-          followers: 263,
-          highestBid: 8.0,
-          timeLeft: 29288,
-          imageUrl: 'https://i.pinimg.com/originals/86/5f/b2/865fb2a5589c3dbb3cfd58f5762d1e0f.jpg',
-          id: 14,
-          linkUrl: 'Celebrity/kyliejenner'
-        },
-        {
-            handle: 'selenagomez',
-            name: 'Selena Gomez',
-            followers: 257,
-            highestBid: 8.0,
-            timeLeft: 29288,
-            imageUrl: 'https://i.ibb.co/2gsmWzf/Selena-Gomez-models-bikini-for-her-friends-line-La-Mariette.png',
-            id: 15,
-            linkUrl: 'Celebrity/selenagomez'
-          },
-          {
-            handle: 'kimkardashian',
-            name: 'Kim Kardashian',
-            followers: 249,
-            highestBid: 8.0,
-            timeLeft: 29288,
-            imageUrl: 'https://i.ibb.co/L0kfCkz/Kim-Kardashian-wedding-ringhttps-www-instagram-com-p-CJq781-MA-M1-Credit-Kim-Kardashian-Instagram.jpg',
-            id: 16,
-            linkUrl: 'Celebrity/kimkardashian'
-          },
-          {
-            handle: 'beyonce',
-            name: 'Beyoncé',
-            followers: 204,
-            highestBid: 8.0,
-            timeLeft: 29288,  
-            imageUrl: 'https://i.ibb.co/GRsrX87/longform-original-15836-1410955737-23.jpg',
-            id: 17,
-            linkUrl: 'Celebrity/beyonce'
-          },
-          {
-            handle: 'kendalljenner',
-            name: 'Kendall Jenner',
-            followers: 263,
-            highestBid: 8.0,
-            timeLeft: 29288,  
-            imageUrl: 'https://i.ibb.co/cy6JThj/2127418-kendall-1577699033.jpg',
-            id: 18,
-            linkUrl: 'Celebrity/kendalljenner'
-          },       
-];
-
+        id: 6,
+        linkUrl: 'influencer/kendalljenner'
+      }        
+  ];
   
-  export default CELEBRITY_DATA
+  export default INFLUENCER_DATA
 
 /*
 
@@ -442,5 +321,5 @@ const SHOP_DATA = {
     }
   }
   
-  export default CELEBRITY_DATA
+  export default INFLUENCER_DATA
   */

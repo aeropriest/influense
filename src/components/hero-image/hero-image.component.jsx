@@ -2,10 +2,9 @@ import { useContext } from 'react'
 import CelebrityContext from '../../context/celebrities.context'
 import BiddingBlock from '../bidding-block/bidding-block.component'
 import Header from '../header/header-component'
-import CelebritiesStrip from '../../components/celebrities-strip/celebrities-strip.component'
-
-
 import './hero-image.styles.scss'
+import CelebrityImageList from '../celebrity-image-list/celebrity-image-list.component'
+
 
 const HeroImage = () => {
     const Celebrities = useContext(CelebrityContext)    
@@ -17,8 +16,8 @@ const HeroImage = () => {
             <div className="heading-text">{name}</div>
             <div className="small-text">@{handle}</div>
             <div className="small-text">{followers}M followers</div>            
-            <BiddingBlock highestBid = {highestBid}/>
-            <CelebritiesStrip/>
+            <BiddingBlock highestBid = {highestBid}/> 
+            <CelebrityImageList />
         </div>
     )
 }
