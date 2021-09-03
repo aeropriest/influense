@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import CelebrityContext from '../../context/celebrities.context'
+import CelebrityDataContext from '../../context/celebrities.data.context'
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CelebrityImageList() {
-  const celebs = useContext(CelebrityContext)    
+  const celebs = useContext(CelebrityDataContext)    
   const classes = useStyles();
   const [state, setState] = useState({
     raised:false,
