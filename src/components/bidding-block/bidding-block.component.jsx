@@ -1,14 +1,34 @@
 import './bidding-block.styles.scss'
 import { ReactComponent as ClockIcon } from './../../assets/images/clock-icon.svg'
 import { ReactComponent as EthereumIcon } from './../../assets/images/etherium.svg'
+import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
+import { Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+      background: '#ff0000',
+      borderRadius: 50,
+      width: '18vw',
+      height: '4hw'
+    },
+  }))
 
 const BiddingBlock = ({highestBid, timeleft}) => {
+    const classes = useStyles();
     return(  
         <div className='bidding-container'>        
             <div className="small-text1">Highest Bid</div>                          
             <div className="heading-text1"><EthereumIcon className='ethereum-icon'/>{highestBid/100} ETH</div>  
-            <div className="small-text1"><ClockIcon className='clock-icon'/> <b>8</b> h <b>8</b> m left</div>                          
-            <button className="button bid-button">BID NOW !</button> 
+            <div className="small-text1"><ClockIcon className='clock-icon'/> <b>8</b> h <b>8</b> m left</div>                                      
+            <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                startIcon={<BidIcon style={{width:'18px'}}/>}
+            >BID NOW!
+            </Button>
         </div>
         )    
 }
