@@ -19,7 +19,6 @@ class SelectedCelebrityContextProvider extends Component {
         dark: { syntax: '#ddd', ui: '#333', bg: '#555'}
     }
     setSelectedCelebrity = (celebrity) => {
-        const {handle, name, followers, highestBid, timeLeft, imageUrl, id}  = celebrity
         this.setState({selectedCelebrity : celebrity})
         console.log('setSelectedCelebrity', this.state.selectedCelebrity)
 
