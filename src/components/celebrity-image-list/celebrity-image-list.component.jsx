@@ -1,14 +1,15 @@
 import { useContext } from 'react'
-import CelebrityDataContext from '../../context/celebrities.data.context'
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
-import './celebrity-image-list.styles.scss'
 import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
-import { CurrentCelebrityContext } from '../../context/CurrentCelebrityContext';
+import CELEBRITY_DATA from '../../context/celebrities.data'
+import { SelectedCelebrityContext } from '../../context/selected.celebrity.context';
+
+import './celebrity-image-list.styles.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'black', //theme.palette.background.paper,
     
   },
-  cardHovered: {
-    transform: "scale3d(1.05, 1.05, 1)"
-  },  
   imageList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
@@ -45,36 +43,60 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function CelebrityImageList() {
-  const celebrity = useContext(CurrentCelebrityContext)
-  const celebs = useContext(CelebrityDataContext)    
+  const celebs = CELEBRITY_DATA;
 
   const classes = useStyles();
-  const [state, setState] = useState({
-    raised:false,
-    shadow:1,
-  })
+
+  return(
+    <SelectedCelebrityContext.Consumer>{(context) => {
+      const { setSelectedCelebrity } = context
+    return ( 
+        <div className='imageListContainer'>
+        <div className={classes.root}>
+          <ImageList className={classes.imageList} cols={10}>
+            {celebs.map((celeb) => (
+                <ImageListItem key={celeb.id}
+                    onClick=
+                    {
+                        ()=>setSelectedCelebrity(celeb)
+                    }
+                >                                
+                <img
+                  src={`${celeb.imageUrl}?w=248&fit=crop&auto=format`}
+                  srcSet={`${celeb.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={celeb.handle}
+                  loading="lazy"
+                />
+                <ImageListItemBar style={{height: '20'}}
+                  subtitle={'@'+celeb.handle}              
+                  actionIcon={
+                    <IconButton
+                      sx={{ color: 'rgba(255, 0, 0, 0.94)',  width:'18px'}}
+                      aria-label={`info about ${celeb.handle}`}
+                    >
+                      <BidIcon style={{fill: "white", width:'18px'}}/>
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </div>
+        </div>
+      )
+    }}            
+    </SelectedCelebrityContext.Consumer>        
+)   
+  /*
   return (
     <div className='imageListContainer'>
     <div className={classes.root}>
       <ImageList className={classes.imageList} cols={10}>
         {celebs.map((celeb) => (
             <ImageListItem key={celeb.id}
-            classes={{root: state.raised ? classes.cardHovered : ""}}
-            onMouseOver={()=>setState({ raised: true, shadow:3})} 
-            onMouseOut={()=>setState({ raised:false, shadow:1 })} 
-            raised={state.raised} zdepth={state.shadow}
             onClick={() => {
                console.log('item clicked')
                console.log(celeb)
-               console.log(celebrity)
-               celebrity.handle = celeb.handle
-               celebrity.followers = celeb.followers
-               celebrity.imageUrl = celeb.imageUrl
-               celebrity.name = celeb.name
-               celebrity.highestBid = celeb.highestBid
-
-               console.log('after')
-               console.log(celebrity)
             }}>                                
             <img
               src={`${celeb.imageUrl}?w=248&fit=crop&auto=format`}
@@ -99,4 +121,5 @@ export default function CelebrityImageList() {
     </div>
     </div>
   );
+  */
 }

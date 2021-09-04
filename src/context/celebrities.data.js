@@ -181,8 +181,7 @@ const CELEBRITY_DATA = [
           },       
 ];
 
-  
-  export default CELEBRITY_DATA
+export default CELEBRITY_DATA
 
 /*
 

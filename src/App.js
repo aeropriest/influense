@@ -1,11 +1,15 @@
 import './App.css';
-import HomePage from './pages/homepage.component';
+import SelectedCelebrityContextProvider from './context/selected.celebrity.context';
+import HeroImage from './components/hero-image/hero-image.component';
+import CelebrityImageList from './components/celebrity-image-list/celebrity-image-list.component'
 
 function App() {
   return (
     <div className="App">
-        <HomePage/>
-    </div>
+    <SelectedCelebrityContextProvider>
+      <HeroImage/>
+      <CelebrityImageList/>
+    </SelectedCelebrityContextProvider>    </div>
   );
 }
 
