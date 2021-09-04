@@ -41,9 +41,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function CelebrityImageList() {
-  const celebs = CELEBRITY_DATA;
-
-  const classes = useStyles();
+  const celebs = CELEBRITY_DATA
+  const classes = useStyles()
+  console.log('CELEBRITY_DATA IS HERE')
+  console.log(celebs)
 
   return(
     <SelectedCelebrityContext.Consumer>{(context) => {
@@ -60,8 +61,8 @@ export default function CelebrityImageList() {
                     }
                 >                                
                 <img
-                  src={`${celeb.imageUrl}?w=248&fit=crop&auto=format`}
-                  srcSet={`${celeb.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${celeb.thumbnail}`}
+                  srcSet={`${celeb.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                   alt={celeb.handle}
                   loading="lazy"
                 />
@@ -97,8 +98,8 @@ export default function CelebrityImageList() {
                console.log(celeb)
             }}>                                
             <img
-              src={`${celeb.imageUrl}?w=248&fit=crop&auto=format`}
-              srcSet={`${celeb.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${celeb.posterUrl}?w=248&fit=crop&auto=format`}
+              srcSet={`${celeb.posterUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={celeb.handle}
               loading="lazy"
             />

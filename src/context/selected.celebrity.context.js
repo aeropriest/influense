@@ -10,7 +10,7 @@ class SelectedCelebrityContextProvider extends Component {
             followers: 263,
             highestBid: 8.0,
             timeLeft: 29288,
-            imageUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
+            posterUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
             id: 1,
             linkUrl: 'Celebrity/arianagrande'            
         },
