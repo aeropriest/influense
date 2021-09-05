@@ -6,21 +6,24 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
+import { TextField } from '@material-ui/core';
 import './search-dialog.styles.css'
-import SearchBar from "material-ui-search-bar"
 import CELEBRITY_DATA from '../../context/celebrities.data'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        overflow: 'auto',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
         backgroundColor: '#000000cc',
+        minWidth: '96vw',        
+        minHeight: '95vh',
       },
       imageList: {
-        overflow: 'auto',
+        width: '110vw',
+        height: '100vh',
+        padding: theme.spacing(1),
       },
       icon: {
         color: 'rgba(255, 255, 255, 0.54)',
@@ -51,11 +54,15 @@ const SearchDialog = (props) => {
     const classes = useStyles();
     return (
         <Dialog open={openPopup} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
- <SearchBar
-  />        
      <div className={classes.root}>
-      <ImageList rowHeight={280} cols={6} gap={10} colWidth={200} className={classes.imageList}>
-        <ImageListItem key="Subheader" cols={6} style={{ height: 'auto' }}>
+     <TextField
+    id="outlined-secondary"
+    label="Outlined secondary"
+    variant="outlined"
+    color="secondary"
+  />
+      <ImageList rowHeight={280} cols={6} gap={8} className={classes.imageList}>
+        <ImageListItem key="Subheader" cols={6}  style={{ height: 'auto' }}>
           <ListSubheader component="div">December</ListSubheader>
         </ImageListItem>
         {celebs.map((cleb) => (
@@ -63,7 +70,7 @@ const SearchDialog = (props) => {
             <img src={cleb.thumbnail} alt={cleb.handle} />
             <ImageListItemBar
               title={cleb.name}
-              subtitle={<span>@{cleb.handle}</span>}
+              subtitle={<span>by: {cleb.handle}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${cleb.handle}`} className={classes.icon}>
                   <InfoIcon />

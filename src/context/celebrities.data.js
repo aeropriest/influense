@@ -119,7 +119,150 @@ const CELEBRITY_DATA = [
             thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630763088/mileycyrus.png',
             id: 23,
             linkUrl: 'Celebrity/kendalljenner'
-          },                    
+          }, 
+    {
+      handle: 'jlo',
+      name: 'Jennifer Lopez',
+      followers: 263,
+      highestBid: 8.0,
+      timeLeft: 29288,  
+      posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630826555/jlo.png',
+      thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630826555/jlo.png',
+      id: 6,
+      linkUrl: 'Celebrity/kendalljenner'
+    },       
+    {
+      handle: 'arianagrande',
+      name: 'Ariana Grande',
+      followers: 263,
+      highestBid: 8.0,
+      timeLeft: 29288,
+      posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
+      thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
+      id: 1,
+      linkUrl: 'Celebrity/arianagrande'
+    },
+    {
+      handle: 'kyliejenner',
+      name: 'Kylie Jenner',
+      followers: 263,
+      highestBid: 8.0,
+      timeLeft: 29288,
+      posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
+      thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
+      id: 2,
+      linkUrl: 'Celebrity/kyliejenner'
+    },
+    {
+        handle: 'selenagomez',
+        name: 'Selena Gomez',
+        followers: 257,
+        highestBid: 8.0,
+        timeLeft: 29288,
+        posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1630760058/selenagomez.png',
+        thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/selenagomez.png',
+        id: 3,
+        linkUrl: 'Celebrity/selenagomez'
+      },
+      {
+        handle: 'kimkardashian',
+        name: 'Kim Kardashian',
+        followers: 249,
+        highestBid: 8.0,
+        timeLeft: 29288,
+        posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
+        thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
+        id: 4,
+        linkUrl: 'Celebrity/kimkardashian'
+      },
+      {
+        handle: 'beyonce',
+        name: 'Beyoncé',
+        followers: 204,
+        highestBid: 8.0,
+        timeLeft: 29288,  
+        posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
+        thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
+        id: 5,
+        linkUrl: 'Celebrity/beyonce'
+      },
+      {
+        handle: 'kendalljenner',
+        name: 'Kendall Jenner',
+        followers: 263,
+        highestBid: 8.0,
+        timeLeft: 29288,  
+        posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
+        thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
+        id: 6,
+        linkUrl: 'Celebrity/kendalljenner'
+      },
+      {
+        handle: 'arianagrande',
+        name: 'Ariana Grande',
+        followers: 263,
+        highestBid: 8.0,
+        timeLeft: 29288,
+        posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
+        thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
+        id: 1,
+        linkUrl: 'Celebrity/arianagrande'
+      },
+      {
+        handle: 'kyliejenner',
+        name: 'Kylie Jenner',
+        followers: 263,
+        highestBid: 8.0,
+        timeLeft: 29288,
+        posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
+        thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
+        id: 2,
+        linkUrl: 'Celebrity/kyliejenner'
+      },
+      {
+          handle: 'selenagomez',
+          name: 'Selena Gomez',
+          followers: 257,
+          highestBid: 8.0,
+          timeLeft: 29288,
+          posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1630760058/selenagomez.png',
+          thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/selenagomez.png',
+          id: 3,
+          linkUrl: 'Celebrity/selenagomez'
+        },
+        {
+          handle: 'kimkardashian',
+          name: 'Kim Kardashian',
+          followers: 249,
+          highestBid: 8.0,
+          timeLeft: 29288,
+          posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
+          thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
+          id: 4,
+          linkUrl: 'Celebrity/kimkardashian'
+        },
+        {
+          handle: 'beyonce',
+          name: 'Beyoncé',
+          followers: 204,
+          highestBid: 8.0,
+          timeLeft: 29288,  
+          posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
+          thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
+          id: 5,
+          linkUrl: 'Celebrity/beyonce'
+        },
+        {
+          handle: 'kendalljenner',
+          name: 'Kendall Jenner',
+          followers: 263,
+          highestBid: 8.0,
+          timeLeft: 29288,  
+          posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
+          thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
+          id: 6,
+          linkUrl: 'Celebrity/kendalljenner'
+        },                             
 ];
 
 export default CELEBRITY_DATA

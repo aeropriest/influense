@@ -1,5 +1,5 @@
 .bidding-container {
-  margin-top: 15vh;
+  margin-top: 20vh;
   text-align: right;
   float: right;
   margin-left: auto;
@@ -25,7 +25,7 @@
   background-color: #ff0000;
   color: #ffffff;
   border: none;
-  margin-top: 1vh;
+  margin-top: 3.5vh;
 }
 
 .small-text1 {

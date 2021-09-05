@@ -10,10 +10,11 @@ class SelectedCelebrityContextProvider extends Component {
             followers: 263,
             highestBid: 8.0,
             timeLeft: 29288,
-            posterUrl: 'https://i.ibb.co/bPjs6tM/cadfbd38e105024bf475bd1a4f113932.jpg',
+            posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
+            thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
             id: 1,
-            linkUrl: 'Celebrity/arianagrande'            
-        },
+            linkUrl: 'Celebrity/arianagrande'
+                },
         isLightThem: true,
         light: { syntax: '#555', ui: '#ddd', bg: '#eee'},
         dark: { syntax: '#ddd', ui: '#333', bg: '#555'}
