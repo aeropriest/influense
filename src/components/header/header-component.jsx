@@ -8,21 +8,20 @@ import SearchDialog from '../search-dialog/search-dialog.component'
 
 import './header-component.styles.css'
 const Header = () => {
-    const [openPopup, setOpenPopup] = useState(false)
+    const [open, setOpen] = useState(false)
     return(
             <div className='header'>
                 <MainMenu className='main-menu'/>
                 <div className='options'>
                     <SearchIcon className='option' 
-                    onClick={() => { setOpenPopup(true) }}
-
+                    onClick={() => { setOpen(true) }}
                     />
                     <DropMenu className='option'/>
                     <UserIcon className='option'/>
                 </div>
                 <SearchDialog
-                openPopup={openPopup}
-                setOpenPopup={setOpenPopup}
+                open={open}
+                setOpen={setOpen}
                 >
             </SearchDialog>
 

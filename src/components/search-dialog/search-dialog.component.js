@@ -1,13 +1,12 @@
 import React from 'react'
-import SearchIcon from '@material-ui/icons/Search';
 import { Dialog, makeStyles } from '@material-ui/core';
 import ImageList from '@material-ui/core/ImageList';
+import CloseIcon from '@material-ui/icons/Close';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import SearchBox from '../searchbox.component/searchbox.component'
-import { withStyles } from '@material-ui/core/styles';
 
 
 import './search-dialog.styles.css'
@@ -59,37 +58,32 @@ const useStyles = makeStyles(theme => ({
         blurEffect: 'systemMaterialLight',  
     },
     closeButton: {
-      width: '50px',
-      height: '50px',
-      backgroundColor: '#ff0000',
-
-      left: '50vw',
       position: 'absolute',
       right: theme.spacing(1),
       top: theme.spacing(1),
-      color: theme.palette.grey[500],
-    },
+      color: '#ffffff',
+    },    
 }))
 
 
 const SearchDialog = (props) => {
     const celebs = CELEBRITY_DATA
 
-    const { title, children, openPopup, setOpenPopup } = props;
+    const { open, setOpen } = props;
     const classes = useStyles();
     
     function handleChange(event) {
       console.log(event)
   }    
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };  
   const handleClose = () => {
     setOpen(false);
   };  
     return (
-    <Dialog onClose={handleClose} open={open} open={openPopup} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
+    <Dialog onClose={handleClose} open={open} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
+      <IconButton aria-label="close" className={classes.closeButton} onClick={handleClose}>
+              <CloseIcon />
+              </IconButton>
+
      <div className={classes.root}>
      <SearchBox
           placeHolder='search ramayana character'

@@ -73,7 +73,7 @@ const CELEBRITY_DATA = [
       timeLeft: 29288,  
       posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759863/ladygaga.png',
       thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759863/ladygaga.png',
-      id: 6,
+      id: 7,
       linkUrl: 'Celebrity/kendalljenner'
     }, 
           {
@@ -84,7 +84,7 @@ const CELEBRITY_DATA = [
             timeLeft: 29288,  
             posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761840/nickiminaj.png',
             thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761840/nickiminaj.png',
-                  id: 20,
+                  id: 8,
             linkUrl: 'Celebrity/kendalljenner'
           },      
           {
@@ -95,7 +95,7 @@ const CELEBRITY_DATA = [
             timeLeft: 29288,  
             posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630762438/khloekardashian.png',
             thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630762438/khloekardashian.png',
-                  id: 21,
+                  id: 9,
             linkUrl: 'Celebrity/kendalljenner'
           },       
           {
@@ -106,7 +106,7 @@ const CELEBRITY_DATA = [
             timeLeft: 29288,  
             posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630762649/taylorswift.png',
             thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630762649/taylorswift.png',
-                  id: 22,
+                  id: 10,
             linkUrl: 'Celebrity/kendalljenner'
           },               
           {
@@ -117,7 +117,7 @@ const CELEBRITY_DATA = [
             timeLeft: 29288,  
             posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630763088/mileycyrus.png',
             thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630763088/mileycyrus.png',
-            id: 23,
+            id: 11,
             linkUrl: 'Celebrity/kendalljenner'
           }, 
     {
@@ -128,7 +128,7 @@ const CELEBRITY_DATA = [
       timeLeft: 29288,  
       posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630826555/jlo.png',
       thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630826555/jlo.png',
-      id: 6,
+      id: 12,
       linkUrl: 'Celebrity/kendalljenner'
     },       
     {
@@ -139,7 +139,7 @@ const CELEBRITY_DATA = [
       timeLeft: 29288,
       posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
       thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
-      id: 1,
+      id: 13,
       linkUrl: 'Celebrity/arianagrande'
     },
     {
@@ -150,7 +150,7 @@ const CELEBRITY_DATA = [
       timeLeft: 29288,
       posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
       thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
-      id: 2,
+      id: 14,
       linkUrl: 'Celebrity/kyliejenner'
     },
     {
@@ -161,7 +161,7 @@ const CELEBRITY_DATA = [
         timeLeft: 29288,
         posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1630760058/selenagomez.png',
         thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/selenagomez.png',
-        id: 3,
+        id: 15,
         linkUrl: 'Celebrity/selenagomez'
       },
       {
@@ -172,7 +172,7 @@ const CELEBRITY_DATA = [
         timeLeft: 29288,
         posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
         thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
-        id: 4,
+        id: 16,
         linkUrl: 'Celebrity/kimkardashian'
       },
       {
@@ -183,7 +183,7 @@ const CELEBRITY_DATA = [
         timeLeft: 29288,  
         posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
         thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
-        id: 5,
+        id: 17,
         linkUrl: 'Celebrity/beyonce'
       },
       {
@@ -194,7 +194,7 @@ const CELEBRITY_DATA = [
         timeLeft: 29288,  
         posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
         thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
-        id: 6,
+        id: 18,
         linkUrl: 'Celebrity/kendalljenner'
       },
       {
@@ -205,7 +205,7 @@ const CELEBRITY_DATA = [
         timeLeft: 29288,
         posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
         thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759459/arianagrande.png',
-        id: 1,
+        id: 19,
         linkUrl: 'Celebrity/arianagrande'
       },
       {
@@ -216,7 +216,7 @@ const CELEBRITY_DATA = [
         timeLeft: 29288,
         posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
         thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630759986/kyliejenner.png',
-        id: 2,
+        id: 20,
         linkUrl: 'Celebrity/kyliejenner'
       },
       {
@@ -227,7 +227,7 @@ const CELEBRITY_DATA = [
           timeLeft: 29288,
           posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1630760058/selenagomez.png',
           thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/selenagomez.png',
-          id: 3,
+          id: 21,
           linkUrl: 'Celebrity/selenagomez'
         },
         {
@@ -238,7 +238,7 @@ const CELEBRITY_DATA = [
           timeLeft: 29288,
           posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
           thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/kimkardashian.png',
-          id: 4,
+          id: 22,
           linkUrl: 'Celebrity/kimkardashian'
         },
         {
@@ -249,7 +249,7 @@ const CELEBRITY_DATA = [
           timeLeft: 29288,  
           posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
           thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630760058/beyonce.png',
-          id: 5,
+          id: 23,
           linkUrl: 'Celebrity/beyonce'
         },
         {
@@ -260,7 +260,7 @@ const CELEBRITY_DATA = [
           timeLeft: 29288,  
           posterUrl: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
           thumbnail: 'https://res.cloudinary.com/ddyxd84wz/image/upload/v1630761631/kendalljenner.png',
-          id: 6,
+          id: 24,
           linkUrl: 'Celebrity/kendalljenner'
         },                             
 ];
