@@ -25,27 +25,20 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 100,
     }, 
     textfiledFocused:{
-        marginTop: '-12px',
-        width: '35vw',
-        height: '40px',
-        borderWidth: '5.0px',
-        borderStyle: "solid",    
-        color: "white", 
-        borderColor: '#000000',
-        fontWeight: 120,
-        marginLeft: '0px',
+        borderWidth: '0.0px',
     },
 }))
 
-const SearchBox = ({placeHolder, handleChange}) => {
+const SearchBox = ({handleChange}) => {
     const classes = useStyles();
     return(
             <div className={classes.root} 
             style={{ margin: "20px", padding: "0px"}}
             >
             <SearchIcon className={classes.searchicon} style={{ margin: "15px", padding: "0px"}}/>
-                <TextField style={{ marginTop: "-2px", marginLeft: '-25px', padding: "0px"}}
-                    variant="outlined"
+                <TextField style={{ marginTop: "-10px", marginLeft: '-25px', padding: "0px"}}
+                type="input"
+                    variant="filled"
                     margin="normal"
                     InputProps={{
                             classes: {

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Dialog, makeStyles } from '@material-ui/core';
 import ImageList from '@material-ui/core/ImageList';
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@material-ui/icons/Cancel';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,9 +18,9 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: '#00000022',
-        minWidth: '96vw',        
-        minHeight: '95vh',
+        backgroundColor: '#00000000',
+        minWidth: '100vw',        
+        minHeight: '100vh',
         color: '#ffffff'
       },
       searchicon:{
@@ -36,48 +36,52 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1),
       },
       closeicon:{
-        width: '80px',
-        height: '80px',
+        width: '100px',
         color: 'rgba(255, 255, 255, 1)',
     },
       icon: {
-        color: 'rgba(255, 255, 255, 0.54)',
+        color: 'rgba(255, 255, 255, 1.54)',
       },    
     dialogWrapper: {
+        backdropFilter: "blur(3px)",
         padding: theme.spacing(0),
         position: 'absolute',
-        top: theme.spacing(0),
+        top: theme.spacing(-2.5),
         backgroundColor: '#00000000',
         borderWidth: 0.5,
         borderRadius: 10,
         borderColor: "#fff",
         borderStyle: "solid",        
-        minWidth: '96vw',        
-        minHeight: '95vh',
+        minWidth: '99vw',        
+        minHeight: '97vh',
         boxShadow: 'none',      
         blurEffect: 'systemMaterialLight',  
     },
     closeButton: {
       position: 'absolute',
-      right: theme.spacing(1),
-      top: theme.spacing(1),
+      right: theme.spacing(2),
+      top: theme.spacing(2.5),
       color: '#ffffff',
     },    
 }))
 
 
 const SearchDialog = (props) => {
-    const celebs = CELEBRITY_DATA
+  const [celebrities, setCelebrities] = useState(CELEBRITY_DATA)
 
     const { open, setOpen } = props;
     const classes = useStyles();
     
     function handleChange(event) {
-      console.log(event)
-  }    
-  const handleClose = () => {
-    setOpen(false);
-  };  
+      const temp = CELEBRITY_DATA
+      setCelebrities(temp.filter(celeb => 
+        celeb.name.toLowerCase().includes(event.target.value.toLowerCase())
+        ))
+    }
+    const handleClose = () => {
+      setOpen(false);
+    }
+  
     return (
     <Dialog onClose={handleClose} open={open} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
       <IconButton aria-label="close" className={classes.closeButton} onClick={handleClose}>
@@ -89,15 +93,16 @@ const SearchDialog = (props) => {
           placeHolder='search ramayana character'
           handleChange = {handleChange}
         />
-      <ImageList rowHeight={280} cols={6} gap={8} className={classes.imageList}>
+      <ImageList rowHeight={280} cols={6} gap={8} className={classes.imageList} style={{marginTop:'-20px'}}>
         <ImageListItem key="Subheader" cols={6}  style={{ height: 'auto' }}>
         </ImageListItem>
-        {celebs.map((cleb) => (
+        {celebrities.map((cleb) => (
           <ImageListItem key={cleb.id}>
             <img src={cleb.thumbnail} alt={cleb.handle} />
             <ImageListItemBar
+            style={{ backgroundColor:'#00000055', height: '50px', backdropFilter: "blur(3px)"}}
               title={cleb.name}
-              subtitle={<span>by: {cleb.handle}</span>}
+              subtitle={<span>@{cleb.handle}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${cleb.handle}`} className={classes.icon}>
                   <InfoIcon />

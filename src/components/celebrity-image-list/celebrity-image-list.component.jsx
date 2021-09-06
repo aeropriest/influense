@@ -52,7 +52,8 @@ export default function CelebrityImageList() {
     return ( 
         <div className='imageListContainer'>
         <div className={classes.root}>
-          <ImageList className={classes.imageList} cols={10}>
+          <ImageList className={classes.imageList} cols={10}
+          style={{ backgroundColor:'#00000055',backdropFilter: "blur(3px)"}}>
             {celebs.map((celeb) => (
                 <ImageListItem key={celeb.id}
                     onClick=
@@ -66,7 +67,8 @@ export default function CelebrityImageList() {
                   alt={celeb.handle}
                   loading="lazy"
                 />
-                <ImageListItemBar style={{height: '20'}}
+                
+                <ImageListItemBar style={{ backgroundColor:'#00000055', height: '35px', backdropFilter: "blur(3px)"}}
                   subtitle={'@'+celeb.handle}              
                   actionIcon={
                     <IconButton
