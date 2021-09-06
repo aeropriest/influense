@@ -53,7 +53,7 @@ export default function CelebrityImageList() {
         <div className='imageListContainer'>
         <div className={classes.root}>
           <ImageList className={classes.imageList} cols={10}
-          style={{ backgroundColor:'#00000055',backdropFilter: "blur(3px)"}}>
+          style={{ backgroundColor:'#00000055', backdropFilter: "blur(3px)"}}>
             {celebs.map((celeb) => (
                 <ImageListItem key={celeb.id}
                     onClick=

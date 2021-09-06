@@ -7,13 +7,12 @@
   margin-left: 3wh;
 }
 .main-menu {
-  height: 40px;
+  height: 35px;
   padding: 25px;
 }
 
 .options {
-  width: 15%;
-  height: 100%;
+  width: 8%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -23,6 +22,6 @@
 }
 
 .option {
-  height: 40px;
+  height: 30px;
   cursor: pointer;
 }

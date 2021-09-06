@@ -14,9 +14,10 @@ const Header = () => {
                 <MainMenu className='main-menu'/>
                 <div className='options'>
                     <SearchIcon className='option' 
+                    style={{height:'35px'}}
                     onClick={() => { setOpen(true) }}
                     />
-                    <DropMenu className='option'/>
+                    <DropMenu className='option' style={{height:'30px'}}/>
                     <UserIcon className='option'/>
                 </div>
                 <SearchDialog
