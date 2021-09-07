@@ -10,6 +10,7 @@ for handle in os.listdir('./'):
         print '\tid: '+str(i)+','
         print '\thandle: "' + handle +'",'
         print '\tfollowers: '+str(random.randint(100,350))+','
+        print '\tthumbnail: "' + handle +'.png",'
         for name in os.listdir('./'+handle):            
             if not name.startswith('.') and not isfile('./'+handle+'/'+name):
                 print '\tname: "' + name +'",'
