@@ -2355,7 +2355,7 @@ const CELEBERITY_IMAGES_DATA=[
 		id: 17,
 		handle: "badgalriri",
 		followers: 350,
-		thumbnail: "badgalriri.png",
+		thumbnail: "https://res.cloudinary.com/ddyxd84wz/image/upload/v1630998402/badgalriri/badgalriri_zvojr7.png",
 		name: "Badgalriri",
 		images: [
 
