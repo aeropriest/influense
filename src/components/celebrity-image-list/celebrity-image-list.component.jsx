@@ -59,17 +59,11 @@ export default function CelebrityImageList() {
 			querySnapshot.forEach(element => {
 				var data = element.data();
 				setCelebrities(arr => [...arr , data]);
-        console.log('99999999999')
-        console.log(data)
 			});
 		})
 	}  
 
-  //const celebrities = CELEBRITY_DATA
   const classes = useStyles()
-  console.log('CELEBRITY_DATA IS HERE')
-  console.log(celebrities)
-
   return(
     <SelectedCelebrityContext.Consumer>{(context) => {
       const { setSelectedCelebrity } = context

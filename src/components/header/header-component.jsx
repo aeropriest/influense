@@ -54,14 +54,14 @@ const connectWallet = async (data) => {
 }
 
 const Header = () => {
-    const [open, setOpen] = useState(false)
+    const [searchDialogOpen, setSearchDialogOpen] = useState(false)
     return(
             <div className='header'>
                 <MainMenu className='main-menu'/>
                 <div className='options'>
                     <SearchIcon className='option' 
                     style={{height:'35px'}}
-                    onClick={() => { setOpen(true) }}
+                    onClick={() => { setSearchDialogOpen(true) }}
                     />
                     <DropMenu className='option' style={{height:'30px'}}/>
                     <UserIcon className='option'
@@ -71,8 +71,8 @@ const Header = () => {
                     />
                 </div>
                 <SearchDialog
-                open={open}
-                setOpen={setOpen}
+                searchDialogOpen={searchDialogOpen}
+                setSearchDialogOpen={setSearchDialogOpen}
                 />
             </div>
     )

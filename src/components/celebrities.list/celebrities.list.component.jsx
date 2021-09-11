@@ -5,12 +5,12 @@ import CloseIcon from '@material-ui/icons/Cancel';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 import SearchBox from '../searchbox.component/searchbox.component'
 import db from '../../context/firebase/firebase'
 
 
-import './search-dialog.styles.css'
+import './celebrities.list.component.css'
+import CELEBRITY_DATA from '../../context/celebrities/celebrities.data'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -66,40 +66,43 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const SearchDialog = (props) => {
-  const [celebrities , setCelebrities] = useState([]);
+const CelebritiesListComponent = (props) => {
+    const [celebrities , setCelebrities] = useState([]);
 
-  window.addEventListener('load', () => {
-		Fetchdata();
-	});
+    window.addEventListener('load', () => {
+          Fetchdata();
+      });
+  
+      // Fetch the required data using the get() method
+      const Fetchdata = ()=>{
+          db.collection("influensers").get().then((querySnapshot) => {
+              
+              // Loop through the data and store
+              // it in array to display
+              querySnapshot.forEach(element => {
+                  var data = element.data();
+                  setCelebrities(arr => [...arr , data]);
+          console.log('99999999999')
+          console.log(data)
+              });
+          })
+      }  
 
-	// Fetch the required data using the get() method
-	const Fetchdata = ()=>{
-		db.collection("influensers").get().then((querySnapshot) => {
-			
-			// Loop through the data and store
-			// it in array to display
-			querySnapshot.forEach(element => {
-				var data = element.data();
-				setCelebrities(arr => [...arr , data]);
-			});
-		})
-	}  
-    const { searchDialogOpen, setSearchDialogOpen } = props;
+    const { open, setOpen } = props;
     const classes = useStyles();
     
     function handleChange(event) {
-      // const temp = CELEBRITY_DATA
-      // setCelebrities(temp.filter(celeb => 
-      //   celeb.name.toLowerCase().includes(event.target.value.toLowerCase())
-      //   ))
+      const temp = CELEBRITY_DATA
+      setCelebrities(temp.filter(celeb => 
+        celeb.name.toLowerCase().includes(event.target.value.toLowerCase())
+        ))
     }
     const handleClose = () => {
-      setSearchDialogOpen(false);
+      setOpen(false);
     }
   
     return (
-    <Dialog onClose={handleClose} open={searchDialogOpen} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
+    <Dialog onClose={handleClose} open={open} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
       <IconButton aria-label="close" className={classes.closeButton} onClick={handleClose}>
               <CloseIcon />
               </IconButton>
@@ -119,11 +122,6 @@ const SearchDialog = (props) => {
             style={{ backgroundColor:'#00000055', height: '50px', backdropFilter: "blur(3px)"}}
               title={cleb.name}
               subtitle={<span>@{cleb.handle}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${cleb.handle}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
             />
           </ImageListItem>
         ))}
@@ -133,4 +131,4 @@ const SearchDialog = (props) => {
     )
 }
 
-export default SearchDialog
+export default CelebritiesListComponent
