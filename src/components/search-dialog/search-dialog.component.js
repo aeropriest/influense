@@ -10,7 +10,7 @@ import SearchBox from '../searchbox.component/searchbox.component'
 
 
 import './search-dialog.styles.css'
-import CELEBRITY_DATA from '../../context/celebrities.data'
+import CELEBRITY_DATA from '../../context/celebrities/celebrities.data'
 
 const useStyles = makeStyles(theme => ({
     root: {

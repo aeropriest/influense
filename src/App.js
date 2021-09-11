@@ -1,5 +1,5 @@
 import './App.css';
-import SelectedCelebrityContextProvider from './context/selected.celebrity.context';
+import SelectedCelebrityContextProvider from './context/celebrities/selected.celebrity.context'
 import HeroImage from './components/hero-image/hero-image.component';
 import CelebrityImageList from './components/celebrity-image-list/celebrity-image-list.component'
 

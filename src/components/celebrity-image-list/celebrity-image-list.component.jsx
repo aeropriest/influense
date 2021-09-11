@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
-import CELEBRITY_DATA from '../../context/celebrities.data'
-import { SelectedCelebrityContext } from '../../context/selected.celebrity.context';
+import CELEBRITY_DATA from '../../context/celebrities/celebrities.data'
+import { SelectedCelebrityContext } from '../../context/celebrities/selected.celebrity.context'
+import db from '../../context/firebase/firebase'
 
 import './celebrity-image-list.styles.css'
 
@@ -41,10 +43,32 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function CelebrityImageList() {
-  const celebs = CELEBRITY_DATA
+
+  const [celebrities , setCelebrities] = useState([]);
+
+  window.addEventListener('load', () => {
+		Fetchdata();
+	});
+
+	// Fetch the required data using the get() method
+	const Fetchdata = ()=>{
+		db.collection("influensers").get().then((querySnapshot) => {
+			
+			// Loop through the data and store
+			// it in array to display
+			querySnapshot.forEach(element => {
+				var data = element.data();
+				setCelebrities(arr => [...arr , data]);
+        console.log('99999999999')
+        console.log(data)
+			});
+		})
+	}  
+
+  //const celebrities = CELEBRITY_DATA
   const classes = useStyles()
   console.log('CELEBRITY_DATA IS HERE')
-  console.log(celebs)
+  console.log(celebrities)
 
   return(
     <SelectedCelebrityContext.Consumer>{(context) => {
@@ -54,7 +78,7 @@ export default function CelebrityImageList() {
         <div className={classes.root}>
           <ImageList className={classes.imageList} cols={10}
           style={{ backgroundColor:'#00000055', backdropFilter: "blur(3px)"}}>
-            {celebs.map((celeb) => (
+            {celebrities.map((celeb) => (
                 <ImageListItem key={celeb.id}
                     onClick=
                     {
@@ -62,8 +86,8 @@ export default function CelebrityImageList() {
                     }
                 >                                
                 <img
-                  src={`${celeb.thumbnail}`}
-                  srcSet={`${celeb.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${celeb.profileImg}`}
+                  srcSet={`${celeb.profileImg}?w=248&fit=crop&auto=format&dpr=2 2x`}
                   alt={celeb.handle}
                   loading="lazy"
                 />
@@ -93,7 +117,7 @@ export default function CelebrityImageList() {
     <div className='imageListContainer'>
     <div className={classes.root}>
       <ImageList className={classes.imageList} cols={10}>
-        {celebs.map((celeb) => (
+        {celebrities.map((celeb) => (
             <ImageListItem key={celeb.id}
             onClick={() => {
                console.log('item clicked')
