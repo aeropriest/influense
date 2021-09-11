@@ -3,7 +3,9 @@ import SelectedCelebrityContextProvider from './context/selected.celebrity.conte
 import HeroImage from './components/hero-image/hero-image.component';
 import CelebrityImageList from './components/celebrity-image-list/celebrity-image-list.component'
 
+
 function App() {
+  
   return (
     <div className="App">
     <SelectedCelebrityContextProvider>
