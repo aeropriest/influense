@@ -5,7 +5,6 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
-import CELEBRITY_DATA from '../../context/celebrities/celebrities.data'
 import { SelectedCelebrityContext } from '../../context/celebrities/selected.celebrity.context'
 import db from '../../context/firebase/firebase'
 

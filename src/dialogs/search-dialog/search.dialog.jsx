@@ -6,11 +6,11 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import SearchBox from '../searchbox.component/searchbox.component'
+import SearchBox from '../../components/searchbox.component/searchbox.component';
 import db from '../../context/firebase/firebase'
 
 
-import './search-dialog.styles.css'
+import './search.dialog.styles.css'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const SearchDialog = (props) => {
-  const [celebrities , setCelebrities] = useState([]);
+  const [celebrities, setCelebrities] = useState([]);
 
   window.addEventListener('load', () => {
 		Fetchdata();
@@ -114,7 +114,7 @@ const SearchDialog = (props) => {
         </ImageListItem>
         {celebrities.map((cleb) => (
           <ImageListItem key={cleb.id}>
-            <img src={cleb.thumbnail} alt={cleb.handle} />
+            <img src={cleb.profileImg} alt={cleb.handle} />
             <ImageListItemBar
             style={{ backgroundColor:'#00000055', height: '50px', backdropFilter: "blur(3px)"}}
               title={cleb.name}

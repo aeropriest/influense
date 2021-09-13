@@ -7,7 +7,7 @@ import './searchbox.styles.css'
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: '#000000',
-        width: '40vw',        
+        width: '40%',        
         height: '50px',
         borderWidth: '0.2px',
         borderRadius: 10,
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
         width: '25px',
     },
     textfiled: {
-        width: '35vw',
+        width: '100%',
         borderWidth: '0.0px',
         borderStyle: "solid",    
         color: "white", 

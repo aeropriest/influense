@@ -3,7 +3,9 @@ import { ReactComponent as SearchIcon } from './../../assets/images/search-icon.
 import { ReactComponent as DropMenu } from './../../assets/images/drop-down.svg'
 import { ReactComponent as MainMenu } from './../../assets/images/main-menu.svg'
 import { ReactComponent as UserIcon } from './../../assets/images/user-icon.svg'
-import SearchDialog from '../search-dialog/search-dialog.component'
+import SearchDialog from '../../dialogs/search-dialog/search.dialog'
+import SearchDialog2 from '../../dialogs/search-dialog2/search.dialog2'
+import CelebritiesListDialog from '../../dialogs/celebrities-list/celebrities.list.dialog'
 import Web3 from "web3";
 
 import './header-component.styles.css'
@@ -54,6 +56,7 @@ const connectWallet = async (data) => {
 }
 
 const Header = () => {
+    const [searchDialog2Open, setSearchDialog2Open] = useState(false)  
     const [searchDialogOpen, setSearchDialogOpen] = useState(false)
     return(
             <div className='header'>
@@ -61,9 +64,12 @@ const Header = () => {
                 <div className='options'>
                     <SearchIcon className='option' 
                     style={{height:'35px'}}
-                    onClick={() => { setSearchDialogOpen(true) }}
+                         onClick={() => { setSearchDialogOpen(true) }}
                     />
-                    <DropMenu className='option' style={{height:'30px'}}/>
+                    <DropMenu className='option' 
+                    style={{height:'30px'}}
+                    onClick={() => { setSearchDialog2Open(true) }}
+                    />
                     <UserIcon className='option'
                     onClick={() => { 
                         connectWallet("Example")
@@ -71,8 +77,12 @@ const Header = () => {
                     />
                 </div>
                 <SearchDialog
-                searchDialogOpen={searchDialogOpen}
-                setSearchDialogOpen={setSearchDialogOpen}
+                  searchDialogOpen={searchDialogOpen}
+                  setSearchDialogOpen={setSearchDialogOpen}
+                />
+                <SearchDialog2
+                  searchDialog2Open={searchDialog2Open}
+                  setSearchDialog2Open={setSearchDialog2Open}
                 />
             </div>
     )

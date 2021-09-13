@@ -5,12 +5,10 @@ import CloseIcon from '@material-ui/icons/Cancel';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
-import SearchBox from '../searchbox.component/searchbox.component'
 import db from '../../context/firebase/firebase'
 
 
-import './celebrities.list.component.css'
-import CELEBRITY_DATA from '../../context/celebrities/celebrities.data'
+import './celebrities.list.dialog.styles.css'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -23,13 +21,6 @@ const useStyles = makeStyles(theme => ({
         minHeight: '100vh',
         color: '#ffffff'
       },
-      searchicon:{
-        marginTop: '10px',
-        marginLeft: '10px',
-        width: '30px',
-        height: '30px'
-
-    },
       imageList: {
         width: '110vw',
         height: '100vh',
@@ -66,58 +57,49 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const CelebritiesListComponent = (props) => {
-    const [celebrities , setCelebrities] = useState([]);
+const CelebritiesListDialog = (props) => {
+  const [celebritiesList, setCelebritiesList] = useState([]);
 
-    window.addEventListener('load', () => {
-          Fetchdata();
-      });
-  
-      // Fetch the required data using the get() method
-      const Fetchdata = ()=>{
-          db.collection("influensers").get().then((querySnapshot) => {
-              
-              // Loop through the data and store
-              // it in array to display
-              querySnapshot.forEach(element => {
-                  var data = element.data();
-                  setCelebrities(arr => [...arr , data]);
-          console.log('99999999999')
-          console.log(data)
-              });
-          })
-      }  
+  window.addEventListener('load', () => {
+    console.log('------celebrties dialog open------')
+		Fetchdata();
+	});
 
-    const { open, setOpen } = props;
+	// Fetch the required data using the get() method
+	const Fetchdata = ()=>{
+		db.collection("influensers").get().then((querySnapshot) => {
+			
+			// Loop through the data and store
+			// it in array to display
+			querySnapshot.forEach(element => {
+				var data = element.data();
+				setCelebritiesList(arr => [...arr , data]);
+        console.log(celebritiesList)
+			});
+		})
+    
+	}  
+    const { celebritiesListDialogOpen, setCelebritiesListDialogOpen } = props;
     const classes = useStyles();
     
-    function handleChange(event) {
-      const temp = CELEBRITY_DATA
-      setCelebrities(temp.filter(celeb => 
-        celeb.name.toLowerCase().includes(event.target.value.toLowerCase())
-        ))
-    }
+
     const handleClose = () => {
-      setOpen(false);
+      setCelebritiesListDialogOpen(false);
     }
   
     return (
-    <Dialog onClose={handleClose} open={open} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
+    <Dialog onClose={handleClose} open={celebritiesListDialogOpen} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
       <IconButton aria-label="close" className={classes.closeButton} onClick={handleClose}>
               <CloseIcon />
               </IconButton>
 
      <div className={classes.root}>
-     <SearchBox
-          placeHolder='search ramayana character'
-          handleChange = {handleChange}
-        />
       <ImageList rowHeight={280} cols={6} gap={8} className={classes.imageList} style={{marginTop:'-20px'}}>
         <ImageListItem key="Subheader" cols={6}  style={{ height: 'auto' }}>
         </ImageListItem>
-        {celebrities.map((cleb) => (
+        {celebritiesList.map((cleb) => (
           <ImageListItem key={cleb.id}>
-            <img src={cleb.thumbnail} alt={cleb.handle} />
+            <img src={cleb.profileImg} alt={cleb.handle} />
             <ImageListItemBar
             style={{ backgroundColor:'#00000055', height: '50px', backdropFilter: "blur(3px)"}}
               title={cleb.name}
@@ -131,4 +113,4 @@ const CelebritiesListComponent = (props) => {
     )
 }
 
-export default CelebritiesListComponent
+export default CelebritiesListDialog
