@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
 import { SelectedCelebrityContext } from '../../context/celebrities.context/selected.celebrity.context'
 
-import './celebrity-image-list.styles.css'
+import './celebrity.gallery.list.styles.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {

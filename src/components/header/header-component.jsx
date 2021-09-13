@@ -5,6 +5,7 @@ import { ReactComponent as MainMenu } from './../../assets/images/main-menu.svg'
 import { ReactComponent as UserIcon } from './../../assets/images/user-icon.svg'
 import SearchDialog from '../../dialogs/search-dialog/search.dialog'
 import CelebritiesListDialog from '../../dialogs/celebrities-list/celebrities.list.dialog'
+import ClebritiesProfileList from '../celebrities.profile.list/celebrities.profile.list'
 import Web3 from "web3";
 
 import './header-component.styles.css'
@@ -55,7 +56,8 @@ const connectWallet = async (data) => {
 }
 
 const Header = () => {
-  
+
+  const [clebritiesProfileList, setClebritiesProfileList] = useState(false)
   const [searchDialogOpen, setSearchDialogOpen] = useState(false)
     return(
             <div className='header'>
@@ -67,7 +69,11 @@ const Header = () => {
                     />
                     <DropMenu className='option' 
                     style={{height:'30px'}}
-                    onClick={() => { alert('ckick') }}
+                    onClick={() => { 
+                         alert('clicked')
+                          setClebritiesProfileList(true) }
+                      }
+
                     />
                     <UserIcon className='option'
                     onClick={() => { 
@@ -79,6 +85,14 @@ const Header = () => {
                   searchDialogOpen={searchDialogOpen}
                   setSearchDialogOpen={setSearchDialogOpen}
                 />
+                {
+                  //show the side panel when icon is clicked
+                  setClebritiesProfileList ? (<ClebritiesProfileList 
+                  setClebritiesProfileList = {setClebritiesProfileList} 
+                  clebritiesProfileList = {clebritiesProfileList}
+
+                  />) : null
+                }
             </div>
     )
 }

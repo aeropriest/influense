@@ -1,6 +1,5 @@
 import React, {Component, createContext} from 'react'
 import firebaseContext from '../firebase.context/firebase.context'
-import { useState } from "react";
 export const SelectedCelebrityContext = createContext()
 
 class SelectedCelebrityContextProvider extends Component {
