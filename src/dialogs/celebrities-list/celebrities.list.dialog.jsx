@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Cancel';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
-import db from '../../context/firebase/firebase'
+import db from '../../context/firebase.context/firebase.context'
 
 
 import './celebrities.list.dialog.styles.css'

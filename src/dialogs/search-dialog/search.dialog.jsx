@@ -7,7 +7,7 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import SearchBox from '../../components/searchbox.component/searchbox.component';
-import db from '../../context/firebase/firebase'
+import db from '../../context/firebase.context/firebase.context'
 
 
 import './search.dialog.styles.css'

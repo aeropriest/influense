@@ -4,7 +4,6 @@ import { ReactComponent as DropMenu } from './../../assets/images/drop-down.svg'
 import { ReactComponent as MainMenu } from './../../assets/images/main-menu.svg'
 import { ReactComponent as UserIcon } from './../../assets/images/user-icon.svg'
 import SearchDialog from '../../dialogs/search-dialog/search.dialog'
-import SearchDialog2 from '../../dialogs/search-dialog2/search.dialog2'
 import CelebritiesListDialog from '../../dialogs/celebrities-list/celebrities.list.dialog'
 import Web3 from "web3";
 
@@ -56,8 +55,8 @@ const connectWallet = async (data) => {
 }
 
 const Header = () => {
-    const [searchDialog2Open, setSearchDialog2Open] = useState(false)  
-    const [searchDialogOpen, setSearchDialogOpen] = useState(false)
+  
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false)
     return(
             <div className='header'>
                 <MainMenu className='main-menu'/>
@@ -68,7 +67,7 @@ const Header = () => {
                     />
                     <DropMenu className='option' 
                     style={{height:'30px'}}
-                    onClick={() => { setSearchDialog2Open(true) }}
+                    onClick={() => { alert('ckick') }}
                     />
                     <UserIcon className='option'
                     onClick={() => { 
@@ -79,10 +78,6 @@ const Header = () => {
                 <SearchDialog
                   searchDialogOpen={searchDialogOpen}
                   setSearchDialogOpen={setSearchDialogOpen}
-                />
-                <SearchDialog2
-                  searchDialog2Open={searchDialog2Open}
-                  setSearchDialog2Open={setSearchDialog2Open}
                 />
             </div>
     )

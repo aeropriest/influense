@@ -5,8 +5,7 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import { ReactComponent as BidIcon } from './../../assets/images/bid-icon.svg'
-import { SelectedCelebrityContext } from '../../context/celebrities/selected.celebrity.context'
-import db from '../../context/firebase/firebase'
+import { SelectedCelebrityContext } from '../../context/celebrities.context/selected.celebrity.context'
 
 import './celebrity-image-list.styles.css'
 
@@ -44,23 +43,6 @@ const useStyles = makeStyles((theme) => ({
 export default function CelebrityImageList() {
 
   const [celebrities , setCelebrities] = useState([]);
-
-  window.addEventListener('load', () => {
-		Fetchdata();
-	});
-
-	// Fetch the required data using the get() method
-	const Fetchdata = ()=>{
-		db.collection("influensers").get().then((querySnapshot) => {
-			
-			// Loop through the data and store
-			// it in array to display
-			querySnapshot.forEach(element => {
-				var data = element.data();
-				setCelebrities(arr => [...arr , data]);
-			});
-		})
-	}  
 
   const classes = useStyles()
   return(
