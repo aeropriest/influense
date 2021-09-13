@@ -42,8 +42,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CelebrityImageList() {
 
-  const [celebrities , setCelebrities] = useState([]);
-
   const classes = useStyles()
   return(
     <SelectedCelebrityContext.Consumer>{(context) => {
@@ -53,7 +51,7 @@ export default function CelebrityImageList() {
         <div className={classes.root}>
           <ImageList className={classes.imageList} cols={10}
           style={{ backgroundColor:'#00000055', backdropFilter: "blur(3px)"}}>
-            {celebrities.map((celeb) => (
+            {context.celebrities.map((celeb) => (
                 <ImageListItem key={celeb.id}
                     onClick=
                     {

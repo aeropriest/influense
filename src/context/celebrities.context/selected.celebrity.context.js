@@ -14,7 +14,7 @@ class SelectedCelebrityContextProvider extends Component {
         firebaseContext.collection("influensers").get().then((querySnapshot) => {                    
           querySnapshot.forEach(element => {
             var data = element.data();
-            const celebrity = {handle: data.handle,  name: data.name, followers: data.followers, posterUrl: data.profukeImg }
+            const celebrity = {handle: data.handle,  name: data.name, followers: data.follwers, profileImg: data.profileImg }
             this.setState({selectedCelebrity : celebrity})
             this.state.celebrities.push(celebrity)
           });
@@ -24,7 +24,6 @@ class SelectedCelebrityContextProvider extends Component {
 
     setSelectedCelebrity = (celebrity) => {
         this.setState({selectedCelebrity : celebrity})
-        //console.log('setSelectedCelebrity', this.state.selectedCelebrity)
     }
     render(){
         return(

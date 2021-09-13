@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BiddingBlock = ({highestBid, timeleft}) => {
     const classes = useStyles();
-    return(  
+    return(
         <div className='bidding-container'>        
             <div className="small-text1">Highest Bid</div>                          
             <div className="heading-text1"><EthereumIcon className='ethereum-icon'/>{highestBid/100} ETH</div>  
