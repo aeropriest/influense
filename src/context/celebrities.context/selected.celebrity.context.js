@@ -16,11 +16,7 @@ class SelectedCelebrityContextProvider extends Component {
             var data = element.data();
             const celebrity = {handle: data.handle,  name: data.name, followers: data.followers, posterUrl: data.profukeImg }
             this.setState({selectedCelebrity : celebrity})
-            //this.setState({ celebrities: celebrity })
-            //this.setState({ celebrities: [...this.state.celebrities, celebrity] })
-            this.setState({
-                celebrities:[...this.state.celebrities, celebrity]
-              });
+            this.state.celebrities.push(celebrity)
           });
         })
         console.log(this.state.celebrities)
@@ -28,7 +24,7 @@ class SelectedCelebrityContextProvider extends Component {
 
     setSelectedCelebrity = (celebrity) => {
         this.setState({selectedCelebrity : celebrity})
-        console.log('setSelectedCelebrity', this.state.selectedCelebrity)
+        //console.log('setSelectedCelebrity', this.state.selectedCelebrity)
     }
     render(){
         return(
