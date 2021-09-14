@@ -6,8 +6,8 @@ class CelebritiesContextProvider extends Component {
   state = {
     selectCelebrityHandle: "",
     selectedCelebrity: {},
-    selectedCelebrityGallery: {},
-    celebrities: {},
+    selectedCelebrityGallery: [],
+    celebrities: [],
   };
 
   componentDidMount() {
@@ -24,16 +24,13 @@ class CelebritiesContextProvider extends Component {
             followers: data.follwers,
             profileImg: data.profileImg,
           };
-          //          this.setState({ selectCelebrityHandle: celebrity.handle });
-          //          this.setState({ selectedCelebrity: celebrity });
+          //this.setState({ selectCelebrityHandle: celebrity.handle });
+          if (!this.state.celebrities.length) {
+            this.setState({ selectedCelebrity: celebrity });
+          }
           this.state.celebrities.push(celebrity);
         });
       });
-    console.log("number of celebrities loaded", this.state.celebrities.length);
-    console.log(this.state.celebrities);
-    this.state.celebrities.forEach((c) => {
-      console.log(c);
-    });
   }
 
   setSelectedCelebrityHandle = (celebrityHandle) => {
@@ -52,7 +49,7 @@ class CelebritiesContextProvider extends Component {
             // wallet_addr: doc.wallet_addr,
             // wallet_key: doc.wallet_key,
           };
-          this.setState.apply({ selectedCelebrity: celebrity });
+          //this.setState.setSelectedCelebrity({ selectedCelebrity: celebrity });
           firebaseContext
             .collection("influensers")
             .doc(doc.id)
@@ -72,8 +69,8 @@ class CelebritiesContextProvider extends Component {
               });
             });
         });
+        //console.log(this.state.selectedCelebrityGallery);
       });
-    this.setState({ selectCelebrityHandle: celebrityHandle });
   };
 
   setSelectedCelebrity = (celebrity) => {

@@ -42,6 +42,8 @@ export default function CelebrityImageList() {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
+        console.log("load images for celebrity");
+        //console.log(context.selectedCelebrityGallery);
         return (
           <div className="imageListContainer">
             <div className={classes.root}>
@@ -53,7 +55,7 @@ export default function CelebrityImageList() {
                   backdropFilter: "blur(3px)",
                 }}
               >
-                {context.celebrities.map((celebrity) => (
+                {context.selectedCelebrityGallery.map((celebrity) => (
                   <ImageListItem
                     key={celebrity.id}
                     onClick={() => context.setSelectedCelebrity(celebrity)}
