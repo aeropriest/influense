@@ -4,107 +4,44 @@ export const CelebritiesContext = createContext();
 
 class CelebritiesContextProvider extends Component {
   state = {
-    selectCelebrityHandle: "",
+    selectedCelebrityHandle: "",
     selectedCelebrity: {},
-    selectedCelebrityGallery: [],
-    celebrities: [],
   };
 
-  componentDidMount() {
-    console.log(" celebrities context did mount");
-    firebaseContext
-      .collection(firebaseDatabaseName)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((element) => {
-          var data = element.data();
-          const celebrity = {
-            id: data.id,
-            created_at: data.created_at,
-            handle: data.handle,
-            name: data.name,
-            followers: data.follwers,
-            profileImg: data.profileImg,
-          };
-          //load first celebrity
-          if (!this.state.celebrities.length) {
-            this.setState({ selectedCelebrity: celebrity });
-            console.log("loaded celebrity ", celebrity);
-
-            firebaseContext
-              .collection(firebaseDatabaseName)
-              .where("handle", "==", celebrity.handle)
-              .get()
-              .then((snapshot) => {
-                snapshot.forEach((doc) => {
-                  console.log("loading gallery for ", doc.id);
-                  firebaseContext
-                    .collection(firebaseDatabaseName)
-                    .doc(doc.id)
-                    .collection("gallery")
-                    .get()
-                    .then((images) => {
-                      images.forEach((image) => {
-                        const i = image.data();
-                        const galleryImage = {
-                          created_at: i.created_at,
-                          highestBid: i.highestBid,
-                          id: i.id,
-                          imageUrl: i.imageUrl,
-                          timeLeft: i.timeLeft,
-                          nft_id: i.nft_id,
-                        };
-                        this.state.selectedCelebrityGallery.push(galleryImage);
-                      });
-                    });
-                });
-              });
-          }
-
-          this.state.celebrities.push(celebrity);
-        });
-      });
-  }
-
   setSelectedCelebrityHandle = (celebrityHandle) => {
+    let images = [];
     firebaseContext
       .collection(firebaseDatabaseName)
-      .where("handle", "==", celebrityHandle)
+      .where("handle", "==", "jamesrodriguez10")
       .get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {
-          const celebrity = {
-            handle: doc.handle,
-            name: doc.name,
-            followers: doc.follwers,
-            profileImg: doc.profileImg,
-            id: doc.id,
-            // wallet_addr: doc.wallet_addr,
-            // wallet_key: doc.wallet_key,
-          };
-          //this.setState.setSelectedCelebrity({ selectedCelebrity: celebrity });
-          firebaseContext
-            .collection(firebaseDatabaseName)
-            .doc(doc.id)
+          doc.ref
             .collection("gallery")
             .get()
-            .then((images) => {
-              images.forEach((image) => {
-                const galleryImage = {
-                  created_at: image.created_at,
-                  highestBid: image.highestBid,
-                  id: image.id,
-                  imageUrl: image.imageUrl,
-                  timeLeft: image.timeLeft,
-                  nft_id: image.nft_id,
-                };
-                this.state.selectedCelebrityGallery.push(galleryImage);
+            .then((gallarySnapshot) => {
+              gallarySnapshot.forEach((image) => {
+                images.push(image.data());
               });
             });
+          const celebrity = {
+            handle: doc.data().handle,
+            name: doc.data().name,
+            followers: doc.data().follwers,
+            profileImg: doc.data().profileImg,
+            id: doc.id,
+            gallery: images,
+          };
+          this.setState({ currentCelebrity: celebrity });
+          console.log(this.state.currentCelebrity);
         });
-        //console.log(this.state.selectedCelebrityGallery);
       });
   };
+
+  componentDidMount() {
+    this.setSelectedCelebrityHandle("jamesrodriguez10");
+    console.log(this.state.currentCelebrity);
+  }
 
   setSelectedCelebrity = (celebrity) => {
     this.setState({ selectedCelebrity: celebrity });

@@ -3,7 +3,7 @@ import { ReactComponent as SearchIcon } from "./../../assets/images/search-icon.
 import { ReactComponent as DropMenu } from "./../../assets/images/drop-down.svg";
 import { ReactComponent as MainMenu } from "./../../assets/images/main-menu.svg";
 import { ReactComponent as UserIcon } from "./../../assets/images/user-icon.svg";
-import SearchDialog from "../../dialogs/search.dialog";
+//import SearchDialog from "../../dialogs/search.dialog";
 import CelebrityProfilesDialog from "../../dialogs/celebrities.profiles.dialog";
 import Web3 from "web3";
 
@@ -87,10 +87,10 @@ const Header = () => {
         CelebrityProfilesDialogOpen={CelebrityProfilesDialogOpen}
         setCelebrityProfilesDialogOpen={setCelebrityProfilesDialogOpen}
       />
-      <SearchDialog
+      {/* <SearchDialog
         searchDialogOpen={searchDialogOpen}
         setSearchDialogOpen={setSearchDialogOpen}
-      />
+      /> */}
     </div>
   );
 };

@@ -98,7 +98,7 @@ const SearchDialog = (props) => {
                 placeHolder="search ramayana character"
                 handleChange={handleChange}
               />
-              <ImageList
+              {/* <ImageList
                 rowHeight={280}
                 cols={6}
                 gap={8}
@@ -132,7 +132,7 @@ const SearchDialog = (props) => {
                     />
                   </ImageListItem>
                 ))}
-              </ImageList>
+              </ImageList> */}
             </div>
           </Dialog>
         );

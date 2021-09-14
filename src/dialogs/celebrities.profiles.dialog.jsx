@@ -66,7 +66,7 @@ const CelebrityProfilesDialog = (props) => {
             open={CelebrityProfilesDialogOpen}
             classes={{ paper: classes.dialogWrapper2 }}
           >
-            <ImageList
+            {/* <ImageList
               rowHeight={80}
               cols={1}
               gap={8}
@@ -82,7 +82,7 @@ const CelebrityProfilesDialog = (props) => {
                   <img src={celebrity.profileImg} alt={celebrity.handle} />
                 </ImageListItem>
               ))}
-            </ImageList>
+            </ImageList> */}
             <IconButton
               aria-label="close"
               className={classes.closeButton}

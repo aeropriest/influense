@@ -45,11 +45,10 @@ export default function CelebrityImageList() {
       {(context) => {
         const { setSelectedCelebrity } = context;
         console.log("----------load images for this celebrity");
-        console.log(context.selectedCelebrityGallery);
         return (
           <div className="imageListContainer">
             <div className={classes.root}>
-              <ImageList
+              {/* <ImageList
                 className={classes.imageList}
                 cols={10}
                 style={{
@@ -85,7 +84,7 @@ export default function CelebrityImageList() {
                     />
                   </ImageListItem>
                 ))}
-              </ImageList>
+              </ImageList> */}
             </div>
           </div>
         );
