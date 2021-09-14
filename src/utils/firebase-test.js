@@ -9,37 +9,26 @@ const firebaseConfig = {
   measurementId: "G-5HBPWY0Q5M",
 };
 
+const firebaseDatabaseName = "biddify";
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 const celebrityHandle = "jamesrodriguez10";
 const celeb = db
-  .collection("influensers")
+  .collection(firebaseDatabaseName)
   .where("handle", "==", celebrityHandle)
   .get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
       console.log(doc.id);
-      db.collection("influensers")
-        .doc(doc.id)
+      doc.ref
         .collection("gallery")
         .get()
-        .then((images) => {
-          images.forEach((image) => {
-            console.log(image.id);
+        .then((gallarySnapshot) => {
+          gallarySnapshot.forEach((image) => {
+            var data = image.data();
+            console.log(data);
           });
         });
     });
   });
-
-/*
-    db.collection("influensers")
-      .doc(doc.id)
-      .collection("gallery")
-      .get()
-      .then((gallerySanpShot) => {
-        gallerySanpShot.forEach((image) => {
-          console.log(image);
-        });
-      });
-*/
