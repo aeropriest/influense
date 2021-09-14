@@ -1,17 +1,16 @@
-import './App.css';
-import SelectedCelebrityContextProvider from './context/celebrities.context/selected.celebrity.context'
-import HeroImage from './components/hero-image/hero-image.component';
-import CelebrityImageList from './components/celebrity.gallery.list/celebrity.gallery.list.component'
-
+import "./App.css";
+import CelebritiesContextProvider from "./context/celebrities.context";
+import HeroImageBackground from "./components/hero.image.background/hero.image.background.component";
+import CelebrityImageList from "./components/celebrity.gallery.list/celebrity.gallery.list.component";
 
 function App() {
-  
   return (
     <div className="App">
-    <SelectedCelebrityContextProvider>
-      <HeroImage/>
-      <CelebrityImageList/>
-    </SelectedCelebrityContextProvider>    </div>
+      <CelebritiesContextProvider>
+        <HeroImageBackground />
+        <CelebrityImageList />
+      </CelebritiesContextProvider>{" "}
+    </div>
   );
 }
 

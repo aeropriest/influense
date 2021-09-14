@@ -3,16 +3,14 @@ import CloseIcon from "@material-ui/icons/Cancel";
 import IconButton from "@material-ui/core/IconButton";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
-import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 
-import { CelebritiesContext } from "../../context/celebrities.context/selected.celebrity.context";
+import { CelebritiesContext } from "../context/celebrities.context";
 
 const useStyles = makeStyles((theme) => ({
   imageList: {
     width: "70%",
     height: "70%",
     padding: theme.spacing(1),
-    left: theme.spacing(-10),
   },
   dialogWrapper2: {
     backdropFilter: "blur(3px)",
@@ -67,35 +65,29 @@ const CelebrityProfilesDialog = (props) => {
             open={CelebrityProfilesDialogOpen}
             classes={{ paper: classes.dialogWrapper2 }}
           >
-            <IconButton className={classes.closeButton} onClick={handleClose}>
+            <ImageList
+              rowHeight={80}
+              cols={1}
+              gap={8}
+              className={classes.imageList}
+              style={{ marginTop: "20px" }}
+            >
+              {context.celebrities.map((cleb) => (
+                <ImageListItem
+                  key={cleb.id}
+                  style={{ with: "80px", height: "80px" }}
+                >
+                  <img src={cleb.profileImg} alt={cleb.handle} />
+                </ImageListItem>
+              ))}
+            </ImageList>
+            <IconButton
+              aria-label="close"
+              className={classes.closeButton}
+              onClick={handleClose}
+            >
               <CloseIcon />
             </IconButton>
-            <section className="sidebarListPanel">
-              <div className="container">
-                <div className="row">
-                  {context.celebrities.map((item, index) => (
-                    <div
-                      className="col-12 singleBar "
-                      key={index}
-                      onClick={() => {
-                        alert(`load profile of {item.handle}`);
-                      }}
-                    >
-                      <div className="row">
-                        <div className="col-8 leftSection">
-                          <h3>{item.name}</h3>
-                          <h4>@{item.handle}</h4>
-                          <p>{item.followers} followers</p>
-                        </div>
-                        <div className="col-4 rightSection">
-                          <img src={item.profileImg} alt="{item.handle}" />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
           </Dialog>
         );
       }}
