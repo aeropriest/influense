@@ -42,7 +42,6 @@ export default function CelebrityImageList() {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        const { setSelectedCelebrity } = context;
         return (
           <div className="imageListContainer">
             <div className={classes.root}>
@@ -54,15 +53,15 @@ export default function CelebrityImageList() {
                   backdropFilter: "blur(3px)",
                 }}
               >
-                {context.celebrities.map((celeb) => (
+                {context.celebrities.map((celebrity) => (
                   <ImageListItem
-                    key={celeb.id}
-                    onClick={() => setSelectedCelebrity(celeb)}
+                    key={celebrity.id}
+                    onClick={() => context.setSelectedCelebrity(celebrity)}
                   >
                     <img
-                      src={`${celeb.profileImg}`}
-                      srcSet={`${celeb.profileImg}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                      alt={celeb.handle}
+                      src={`${celebrity.profileImg}`}
+                      srcSet={`${celebrity.profileImg}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={celebrity.handle}
                       loading="lazy"
                     />
 
@@ -72,11 +71,11 @@ export default function CelebrityImageList() {
                         height: "35px",
                         backdropFilter: "blur(3px)",
                       }}
-                      subtitle={"@" + celeb.handle}
+                      subtitle={"@" + celebrity.handle}
                       actionIcon={
                         <IconButton
                           sx={{ color: "rgba(255, 0, 0, 0.94)", width: "18px" }}
-                          aria-label={`info about ${celeb.handle}`}
+                          aria-label={`info about ${celebrity.handle}`}
                         >
                           <BidIcon style={{ fill: "white", width: "18px" }} />
                         </IconButton>

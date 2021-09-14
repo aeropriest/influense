@@ -59,6 +59,7 @@ const CelebrityProfilesDialog = (props) => {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
+        const { setSelectedCelebrityHandle } = context;
         return (
           <Dialog
             onClose={handleClose}
@@ -72,12 +73,13 @@ const CelebrityProfilesDialog = (props) => {
               className={classes.imageList}
               style={{ marginTop: "20px" }}
             >
-              {context.celebrities.map((cleb) => (
+              {context.celebrities.map((celebrity) => (
                 <ImageListItem
-                  key={cleb.id}
+                  key={celebrity.id}
                   style={{ with: "80px", height: "80px" }}
+                  onClick={() => setSelectedCelebrityHandle(celebrity.handle)}
                 >
-                  <img src={cleb.profileImg} alt={cleb.handle} />
+                  <img src={celebrity.profileImg} alt={celebrity.handle} />
                 </ImageListItem>
               ))}
             </ImageList>
