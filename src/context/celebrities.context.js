@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import firebaseContext from "./firebase.context";
+import firebaseContext, { firebaseDatabaseName } from "./firebase.context";
 export const CelebritiesContext = createContext();
 
 class CelebritiesContextProvider extends Component {
@@ -13,7 +13,7 @@ class CelebritiesContextProvider extends Component {
   componentDidMount() {
     console.log(" celebrities context did mount");
     firebaseContext
-      .collection("influensers")
+      .collection(firebaseDatabaseName)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((element) => {
@@ -32,14 +32,14 @@ class CelebritiesContextProvider extends Component {
             console.log("loaded celebrity ", celebrity);
 
             firebaseContext
-              .collection("influensers")
+              .collection(firebaseDatabaseName)
               .where("handle", "==", celebrity.handle)
               .get()
               .then((snapshot) => {
                 snapshot.forEach((doc) => {
                   console.log("loading gallery for ", doc.id);
                   firebaseContext
-                    .collection("influensers")
+                    .collection(firebaseDatabaseName)
                     .doc(doc.id)
                     .collection("gallery")
                     .get()
@@ -68,7 +68,7 @@ class CelebritiesContextProvider extends Component {
 
   setSelectedCelebrityHandle = (celebrityHandle) => {
     firebaseContext
-      .collection("influensers")
+      .collection(firebaseDatabaseName)
       .where("handle", "==", celebrityHandle)
       .get()
       .then((snapshot) => {
@@ -84,7 +84,7 @@ class CelebritiesContextProvider extends Component {
           };
           //this.setState.setSelectedCelebrity({ selectedCelebrity: celebrity });
           firebaseContext
-            .collection("influensers")
+            .collection(firebaseDatabaseName)
             .doc(doc.id)
             .collection("gallery")
             .get()

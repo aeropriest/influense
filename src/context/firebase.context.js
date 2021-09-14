@@ -18,9 +18,7 @@ const firebaseConfig = {
   measurementId: "G-5HBPWY0Q5M",
 };
 
-// Initialize Firebase
-//const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
+export const firebaseDatabaseName = "biddify";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
