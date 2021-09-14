@@ -1,6 +1,5 @@
+import firebase from "firebase";
 
-import firebase from 'firebase';
-  
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -16,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "influense-64aa7.appspot.com",
   messagingSenderId: "393496835159",
   appId: "1:393496835159:web:65c65906c56d98ac809f12",
-  measurementId: "G-5HBPWY0Q5M"
+  measurementId: "G-5HBPWY0Q5M",
 };
 
 // Initialize Firebase
@@ -26,5 +25,5 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var firebaseContext = firebase.firestore();
-  
+
 export default firebaseContext;

@@ -7,6 +7,7 @@ import { ReactComponent as BidIcon } from "./../../assets/images/bid-icon.svg";
 import { CelebritiesContext } from "../../context/celebrities.context";
 
 import "./celebrity.gallery.list.styles.css";
+import { ContactSupportOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +43,9 @@ export default function CelebrityImageList() {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        console.log("load images for celebrity");
-        //console.log(context.selectedCelebrityGallery);
+        const { setSelectedCelebrity } = context;
+        console.log("----------load images for this celebrity");
+        console.log(context.selectedCelebrityGallery);
         return (
           <div className="imageListContainer">
             <div className={classes.root}>
@@ -55,16 +57,14 @@ export default function CelebrityImageList() {
                   backdropFilter: "blur(3px)",
                 }}
               >
-                {context.selectedCelebrityGallery.map((celebrity) => (
-                  <ImageListItem
-                    key={celebrity.id}
-                    onClick={() => context.setSelectedCelebrity(celebrity)}
-                  >
+                {context.selectedCelebrityGallery.map((celebrityImage) => (
+                  <ImageListItem key={celebrityImage.id}>
                     <img
-                      src={`${celebrity.profileImg}`}
-                      srcSet={`${celebrity.profileImg}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                      alt={celebrity.handle}
+                      src={`${celebrityImage.imageUrl}`}
+                      srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={celebrityImage.handle}
                       loading="lazy"
+                      onClick={() => setSelectedCelebrity("celebrity.handle")}
                     />
 
                     <ImageListItemBar
@@ -73,11 +73,11 @@ export default function CelebrityImageList() {
                         height: "35px",
                         backdropFilter: "blur(3px)",
                       }}
-                      subtitle={"@" + celebrity.handle}
+                      subtitle={"@" + context.selectedCelebrity.handle}
                       actionIcon={
                         <IconButton
                           sx={{ color: "rgba(255, 0, 0, 0.94)", width: "18px" }}
-                          aria-label={`info about ${celebrity.handle}`}
+                          aria-label={`info about ${context.selectedCelebrity.handle}`}
                         >
                           <BidIcon style={{ fill: "white", width: "18px" }} />
                         </IconButton>

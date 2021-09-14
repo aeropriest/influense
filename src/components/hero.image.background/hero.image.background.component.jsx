@@ -21,7 +21,7 @@ const HeroImageBackground = () => {
             <div className="heading-text">{name}</div>
             <div className="handle-text">@{handle}</div>
             <div className="followers-text">{followers}M followers</div>
-            <BiddingBlock highestBid={highestBid} />
+            <BiddingBlock highestBid={highestBid} timeLeft={timeLeft} />
           </div>
         );
       }}

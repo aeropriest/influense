@@ -19,15 +19,48 @@ class CelebritiesContextProvider extends Component {
         querySnapshot.forEach((element) => {
           var data = element.data();
           const celebrity = {
+            id: data.id,
+            created_at: data.created_at,
             handle: data.handle,
             name: data.name,
             followers: data.follwers,
             profileImg: data.profileImg,
           };
-          //this.setState({ selectCelebrityHandle: celebrity.handle });
+          //load first celebrity
           if (!this.state.celebrities.length) {
             this.setState({ selectedCelebrity: celebrity });
+            console.log("loaded celebrity ", celebrity);
+
+            firebaseContext
+              .collection("influensers")
+              .where("handle", "==", celebrity.handle)
+              .get()
+              .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                  console.log("loading gallery for ", doc.id);
+                  firebaseContext
+                    .collection("influensers")
+                    .doc(doc.id)
+                    .collection("gallery")
+                    .get()
+                    .then((images) => {
+                      images.forEach((image) => {
+                        const i = image.data();
+                        const galleryImage = {
+                          created_at: i.created_at,
+                          highestBid: i.highestBid,
+                          id: i.id,
+                          imageUrl: i.imageUrl,
+                          timeLeft: i.timeLeft,
+                          nft_id: i.nft_id,
+                        };
+                        this.state.selectedCelebrityGallery.push(galleryImage);
+                      });
+                    });
+                });
+              });
           }
+
           this.state.celebrities.push(celebrity);
         });
       });

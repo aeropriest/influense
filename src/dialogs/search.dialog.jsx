@@ -98,6 +98,41 @@ const SearchDialog = (props) => {
                 placeHolder="search ramayana character"
                 handleChange={handleChange}
               />
+              <ImageList
+                rowHeight={280}
+                cols={6}
+                gap={8}
+                className={classes.imageList}
+                style={{ marginTop: "-20px" }}
+              >
+                <ImageListItem
+                  key="Subheader"
+                  cols={6}
+                  style={{ height: "auto" }}
+                ></ImageListItem>
+                {context.celebrities.map((cleb) => (
+                  <ImageListItem key={cleb.id}>
+                    <img src={cleb.profileImg} alt={cleb.handle} />
+                    <ImageListItemBar
+                      style={{
+                        backgroundColor: "#00000055",
+                        height: "50px",
+                        backdropFilter: "blur(3px)",
+                      }}
+                      title={cleb.name}
+                      subtitle={<span>@{cleb.handle}</span>}
+                      actionIcon={
+                        <IconButton
+                          aria-label={`info about ${cleb.handle}`}
+                          className={classes.icon}
+                        >
+                          <InfoIcon />
+                        </IconButton>
+                      }
+                    />
+                  </ImageListItem>
+                ))}
+              </ImageList>
             </div>
           </Dialog>
         );
