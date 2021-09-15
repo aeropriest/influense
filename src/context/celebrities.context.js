@@ -30,9 +30,6 @@ class CelebritiesContextProvider extends Component {
   }
 
   setSelectedCelebrityHandle = (celebrityHandle) => {
-    console.log("-------- setSelectedCelebrityHandle ------------");
-    //this.setState({ selectedCelebrityHandle: celebrityHandle });
-    //console.log(" setSelectedCelebrityHandle to  ", celebrityHandle);
     let images = [];
     firebaseContext
       .collection(firebaseDatabaseName)

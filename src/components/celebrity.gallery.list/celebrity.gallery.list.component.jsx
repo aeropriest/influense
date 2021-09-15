@@ -47,67 +47,61 @@ export default function CelebrityImageList() {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        console.log("loaded from the list", context.selectedCelebrity);
-        return (
-          <div className="imageListContainer" id="image-gallery">
-            <div className={classes.root}>
-              {context.selectedCelebrity.gallery.map((celebrityImage) => {
-                console.log(celebrityImage);
-                return (
-                  <div className="imageListContainer">
-                    <div className={classes.root}>
-                      <ImageList
-                        className={classes.imageList}
-                        cols={10}
+        //case when contet has not loaded the firebase data
+        if (context.selectedCelebrity !== undefined) {
+          context.selectedCelebrity.gallery.map((image) => {
+            console.log("valid image", image);
+            return image;
+          });
+        }
+        if (context.selectedCelebrity !== undefined) {
+          return (
+            <div className="imageListContainer">
+              <div className={classes.root}>
+                <ImageList
+                  className={classes.imageList}
+                  cols={10}
+                  style={{
+                    backgroundColor: "#00000055",
+                    backdropFilter: "blur(3px)",
+                  }}
+                >
+                  {context.selectedCelebrity.gallery.map((celebrityImage) => (
+                    <ImageListItem key={celebrityImage.id}>
+                      <img
+                        src={`${celebrityImage.imageUrl}`}
+                        srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        alt={celebrityImage.imageUrl}
+                        loading="lazy"
+                      />
+                      <ImageListItemBar
                         style={{
                           backgroundColor: "#00000055",
+                          height: "35px",
                           backdropFilter: "blur(3px)",
                         }}
-                      >
-                        {context.selectedCelebrity.gallery.map(
-                          (celebrityImage) => (
-                            <ImageListItem key={celebrityImage.created_at}>
-                              <img
-                                key={`${celebrityImage.created_at}`}
-                                src={`${celebrityImage.imageUrl}`}
-                                srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                alt={celebrityImage.imageUrl}
-                                loading="lazy"
-                              />
-                              <ImageListItemBar
-                                style={{
-                                  backgroundColor: "#00000055",
-                                  height: "35px",
-                                  backdropFilter: "blur(3px)",
-                                }}
-                                subtitle={
-                                  "@" + context.selectedCelebrity.handle
-                                }
-                                actionIcon={
-                                  <IconButton
-                                    sx={{
-                                      color: "rgba(255, 0, 0, 0.94)",
-                                      width: "18px",
-                                    }}
-                                    aria-label={`info about ${context.selectedCelebrity.handle}`}
-                                  >
-                                    <BidIcon
-                                      style={{ fill: "white", width: "18px" }}
-                                    />
-                                  </IconButton>
-                                }
-                              />
-                            </ImageListItem>
-                          )
-                        )}
-                      </ImageList>
-                    </div>
-                  </div>
-                );
-              })}
+                        subtitle={"@" + context.selectedCelebrity.handle}
+                        actionIcon={
+                          <IconButton
+                            sx={{
+                              color: "rgba(255, 0, 0, 0.94)",
+                              width: "18px",
+                            }}
+                            aria-label={`info about ${context.selectedCelebrity.handle}`}
+                          >
+                            <BidIcon style={{ fill: "white", width: "18px" }} />
+                          </IconButton>
+                        }
+                      />
+                    </ImageListItem>
+                  ))}
+                </ImageList>
+              </div>
             </div>
-          </div>
-        );
+          );
+        } else {
+          return null;
+        }
       }}
     </CelebritiesContext.Consumer>
   );
