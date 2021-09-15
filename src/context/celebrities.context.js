@@ -4,12 +4,14 @@ export const CelebritiesContext = createContext();
 
 class CelebritiesContextProvider extends Component {
   state = {
+    isCelebritySelected: false,
     selectedCelebrityHandle: "",
     selectedCelebrity: {},
     allCelebrities: [],
   };
 
   componentDidMount() {
+    console.log("---- context componentDidMount---");
     //load the first celebrity in the database
     firebaseContext
       .collection(firebaseDatabaseName)
@@ -26,12 +28,12 @@ class CelebritiesContextProvider extends Component {
       });
   }
 
-  setSelectedCelebrityHandle = (celebrityHandle) => {
+  setSelectedCelebrityHandle = async (celebrityHandle) => {
     console.log("-------- setSelectedCelebrityHandle ------------");
     this.setState({ selectedCelebrityHandle: celebrityHandle });
     //console.log(" setSelectedCelebrityHandle to  ", celebrityHandle);
     let images = [];
-    firebaseContext
+    await firebaseContext
       .collection(firebaseDatabaseName)
       .where("handle", "==", celebrityHandle)
       .get()
@@ -58,6 +60,7 @@ class CelebritiesContextProvider extends Component {
             id: doc.id,
             gallery: images,
           };
+          this.setState({ isCelebritySelected: true });
           this.setState({ selectedCelebrity: celebrity });
           //console.log(this.state.selectedCelebrity);
         });

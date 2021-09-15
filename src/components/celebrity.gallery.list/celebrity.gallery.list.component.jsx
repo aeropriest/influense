@@ -1,7 +1,7 @@
 import firebaseContext, {
   firebaseDatabaseName,
 } from "../../context/firebase.context";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
@@ -43,94 +43,81 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CelebrityImageList() {
-  //const [celebrity, setCelebrity] = useState({});
-
   const classes = useStyles();
+  let loadedCelebrityHandle = "";
+  //let { loadedCelebrityHandle, setLoadedCelebrityHandle } = useState("");
+  const { selectedCelebrity, isCelebritySelected } =
+    useContext(CelebritiesContext);
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        console.log("----------load images for this celebrity");
-        const { selectedCelebrityHandle } = context;
-        console.log(selectedCelebrityHandle);
-
-        let images = [];
-        firebaseContext
-          .collection(firebaseDatabaseName)
-          .where("handle", "==", selectedCelebrityHandle)
-          .get()
-          .then((snapshot) => {
-            snapshot.forEach((doc) => {
-              doc.ref
-                .collection("gallery")
-                .get()
-                .then((gallarySnapshot) => {
-                  gallarySnapshot.forEach((image) => {
-                    images.push(image.data());
-                  });
-                });
-
-              //better use something like this
-              //this.setState({ currentCelebrity: doc.data() });
-              //this.currentCelebrity.images = [...images, image.data()];
-
-              const c = {
-                handle: doc.data().handle,
-                name: doc.data().name,
-                followers: doc.data().follwers,
-                profileImg: doc.data().profileImg,
-                id: doc.id,
-                gallery: images,
-              };
-              //setCelebrity(c);
-              //console.log(celebrity);
-            });
-          });
-
-        return (
-          <div className="imageListContainer">
-            <div className={classes.root}>
-              {/* <ImageList
-                className={classes.imageList}
-                cols={10}
-                style={{
-                  backgroundColor: "#00000055",
-                  backdropFilter: "blur(3px)",
-                }}
-              >
-                {celebrity.images.map((celebrityImage) => (
-                  <ImageListItem key={celebrityImage.id}>
-                    <img
-                      src={`${celebrityImage.imageUrl}`}
-                      srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                      alt={celebrityImage.imageUrl}
-                      loading="lazy"
-                    />
-
-                    <ImageListItemBar
-                      style={{
-                        backgroundColor: "#00000055",
-                        height: "35px",
-                        backdropFilter: "blur(3px)",
-                      }}
-                      subtitle={"@" + celebrity.handle}
-                      actionIcon={
-                        <IconButton
-                          sx={{
-                            color: "rgba(255, 0, 0, 0.94)",
-                            width: "18px",
-                          }}
-                          aria-label={`info about ${celebrity.handle}`}
-                        >
-                          <BidIcon style={{ fill: "white", width: "18px" }} />
-                        </IconButton>
-                      }
-                    />
-                  </ImageListItem>
-                ))}
-              </ImageList> */}
+        if (!isCelebritySelected) {
+          console.log("data is not ready to show", isCelebritySelected);
+          return (
+            <div className="imageListContainer">
+              <p>Data not ready to load</p>
             </div>
-          </div>
-        );
+          );
+        } else if (loadedCelebrityHandle === selectedCelebrity.handle) {
+          console.log("it was already loaded", isCelebritySelected);
+        } else if (selectedCelebrity.handle) {
+          console.log(
+            "data is ready to show",
+            isCelebritySelected,
+            selectedCelebrity.handle
+          );
+          loadedCelebrityHandle = selectedCelebrity.handle;
+          console.log("saved handle   ", loadedCelebrityHandle);
+          return (
+            <div className="imageListContainer">
+              <div className={classes.root}>
+                <ImageList
+                  className={classes.imageList}
+                  cols={10}
+                  style={{
+                    backgroundColor: "#00000055",
+                    backdropFilter: "blur(3px)",
+                  }}
+                >
+                  {selectedCelebrity.gallery &&
+                    selectedCelebrity.gallery.map((celebrityImage) => (
+                      <ImageListItem key={celebrityImage.id}>
+                        <img
+                          src={`${celebrityImage.imageUrl}`}
+                          srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                          alt={celebrityImage.imageUrl}
+                          loading="lazy"
+                        />
+                        <ImageListItemBar
+                          style={{
+                            backgroundColor: "#00000055",
+                            height: "35px",
+                            backdropFilter: "blur(3px)",
+                          }}
+                          subtitle={"@" + selectedCelebrity.handle}
+                          actionIcon={
+                            <IconButton
+                              sx={{
+                                color: "rgba(255, 0, 0, 0.94)",
+                                width: "18px",
+                              }}
+                              aria-label={`info about ${selectedCelebrity.handle}`}
+                            >
+                              <BidIcon
+                                style={{ fill: "white", width: "18px" }}
+                              />
+                            </IconButton>
+                          }
+                        />
+                      </ImageListItem>
+                    ))}
+                </ImageList>
+              </div>
+            </div>
+          );
+        } else {
+          console.log("totally invalid state");
+        }
       }}
     </CelebritiesContext.Consumer>
   );
