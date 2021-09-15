@@ -6,13 +6,34 @@ class CelebritiesContextProvider extends Component {
   state = {
     selectedCelebrityHandle: "",
     selectedCelebrity: {},
+    allCelebrities: [],
   };
 
+  componentDidMount() {
+    //load the first celebrity in the database
+    firebaseContext
+      .collection(firebaseDatabaseName)
+      .get()
+      .then((celebritiesSnapshot) => {
+        celebritiesSnapshot.forEach((celebrity) => {
+          this.setState((prevState) => ({
+            allCelebrities: [...prevState.allCelebrities, celebrity.data()],
+          }));
+          if (this.state.selectedCelebrityHandle === "") {
+            this.setSelectedCelebrityHandle(celebrity.data().handle);
+          }
+        });
+      });
+  }
+
   setSelectedCelebrityHandle = (celebrityHandle) => {
+    console.log("-------- setSelectedCelebrityHandle ------------");
+    this.setState({ selectedCelebrityHandle: celebrityHandle });
+    //console.log(" setSelectedCelebrityHandle to  ", celebrityHandle);
     let images = [];
     firebaseContext
       .collection(firebaseDatabaseName)
-      .where("handle", "==", "jamesrodriguez10")
+      .where("handle", "==", celebrityHandle)
       .get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {
@@ -24,6 +45,11 @@ class CelebritiesContextProvider extends Component {
                 images.push(image.data());
               });
             });
+
+          //better use something like this
+          //this.setState({ currentCelebrity: doc.data() });
+          //this.currentCelebrity.images = [...images, image.data()];
+
           const celebrity = {
             handle: doc.data().handle,
             name: doc.data().name,
@@ -32,18 +58,14 @@ class CelebritiesContextProvider extends Component {
             id: doc.id,
             gallery: images,
           };
-          this.setState({ currentCelebrity: celebrity });
-          console.log(this.state.currentCelebrity);
+          this.setState({ selectedCelebrity: celebrity });
+          //console.log(this.state.selectedCelebrity);
         });
       });
   };
 
-  componentDidMount() {
-    this.setSelectedCelebrityHandle("jamesrodriguez10");
-    console.log(this.state.currentCelebrity);
-  }
-
   setSelectedCelebrity = (celebrity) => {
+    console.log("-------- setSelectedCelebrity  ------------");
     this.setState({ selectedCelebrity: celebrity });
   };
 

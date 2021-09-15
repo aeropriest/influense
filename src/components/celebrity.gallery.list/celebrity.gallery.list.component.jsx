@@ -1,3 +1,7 @@
+import firebaseContext, {
+  firebaseDatabaseName,
+} from "../../context/firebase.context";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
@@ -39,12 +43,49 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CelebrityImageList() {
+  //const [celebrity, setCelebrity] = useState({});
+
   const classes = useStyles();
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        const { setSelectedCelebrity } = context;
         console.log("----------load images for this celebrity");
+        const { selectedCelebrityHandle } = context;
+        console.log(selectedCelebrityHandle);
+
+        let images = [];
+        firebaseContext
+          .collection(firebaseDatabaseName)
+          .where("handle", "==", selectedCelebrityHandle)
+          .get()
+          .then((snapshot) => {
+            snapshot.forEach((doc) => {
+              doc.ref
+                .collection("gallery")
+                .get()
+                .then((gallarySnapshot) => {
+                  gallarySnapshot.forEach((image) => {
+                    images.push(image.data());
+                  });
+                });
+
+              //better use something like this
+              //this.setState({ currentCelebrity: doc.data() });
+              //this.currentCelebrity.images = [...images, image.data()];
+
+              const c = {
+                handle: doc.data().handle,
+                name: doc.data().name,
+                followers: doc.data().follwers,
+                profileImg: doc.data().profileImg,
+                id: doc.id,
+                gallery: images,
+              };
+              //setCelebrity(c);
+              //console.log(celebrity);
+            });
+          });
+
         return (
           <div className="imageListContainer">
             <div className={classes.root}>
@@ -56,14 +97,13 @@ export default function CelebrityImageList() {
                   backdropFilter: "blur(3px)",
                 }}
               >
-                {context.selectedCelebrityGallery.map((celebrityImage) => (
+                {celebrity.images.map((celebrityImage) => (
                   <ImageListItem key={celebrityImage.id}>
                     <img
                       src={`${celebrityImage.imageUrl}`}
                       srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                      alt={celebrityImage.handle}
+                      alt={celebrityImage.imageUrl}
                       loading="lazy"
-                      onClick={() => setSelectedCelebrity("celebrity.handle")}
                     />
 
                     <ImageListItemBar
@@ -72,11 +112,14 @@ export default function CelebrityImageList() {
                         height: "35px",
                         backdropFilter: "blur(3px)",
                       }}
-                      subtitle={"@" + context.selectedCelebrity.handle}
+                      subtitle={"@" + celebrity.handle}
                       actionIcon={
                         <IconButton
-                          sx={{ color: "rgba(255, 0, 0, 0.94)", width: "18px" }}
-                          aria-label={`info about ${context.selectedCelebrity.handle}`}
+                          sx={{
+                            color: "rgba(255, 0, 0, 0.94)",
+                            width: "18px",
+                          }}
+                          aria-label={`info about ${celebrity.handle}`}
                         >
                           <BidIcon style={{ fill: "white", width: "18px" }} />
                         </IconButton>

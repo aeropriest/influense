@@ -3,7 +3,7 @@ import { ReactComponent as SearchIcon } from "./../../assets/images/search-icon.
 import { ReactComponent as DropMenu } from "./../../assets/images/drop-down.svg";
 import { ReactComponent as MainMenu } from "./../../assets/images/main-menu.svg";
 import { ReactComponent as UserIcon } from "./../../assets/images/user-icon.svg";
-//import SearchDialog from "../../dialogs/search.dialog";
+import CelebritySearchDialog from "../../dialogs/celebrity.search.dialog";
 import CelebrityProfilesDialog from "../../dialogs/celebrities.profiles.dialog";
 import Web3 from "web3";
 
@@ -59,23 +59,27 @@ const Header = () => {
     useState(false);
   return (
     <div className="header">
-      <MainMenu className="main-menu" />
+      <MainMenu
+        className="main-menu"
+        onClick={() => {
+          setSearchDialogOpen(true);
+        }}
+      />
       <div className="options">
         <SearchIcon
-          className="option"
-          style={{ height: "35px" }}
-          onClick={() => {
-            console.log("seach icon clicked");
-            setSearchDialogOpen(true);
-          }}
-        />
-        <DropMenu
           className="option"
           style={{ height: "35px" }}
           onClick={() => {
             setCelebrityProfilesDialogOpen(true);
           }}
         />
+        {/* <DropMenu
+          className="option"
+          style={{ height: "35px" }}
+          onClick={() => {
+            setCelebrityProfilesDialogOpen(true);
+          }}
+        /> */}
         <UserIcon
           className="option"
           onClick={() => {
@@ -83,14 +87,16 @@ const Header = () => {
           }}
         />
       </div>
+
       <CelebrityProfilesDialog
         CelebrityProfilesDialogOpen={CelebrityProfilesDialogOpen}
         setCelebrityProfilesDialogOpen={setCelebrityProfilesDialogOpen}
       />
-      {/* <SearchDialog
+
+      <CelebritySearchDialog
         searchDialogOpen={searchDialogOpen}
         setSearchDialogOpen={setSearchDialogOpen}
-      /> */}
+      />
     </div>
   );
 };

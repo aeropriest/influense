@@ -8,20 +8,24 @@ const HeroImageBackground = () => {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        //            console.log('----- hero image -----')
-        //            console.log(context)
-        const { handle, name, followers, highestBid, timeLeft, profileImg } =
-          context.selectedCelebrity;
+        //console.log(context.selectedCelebrity.gallery[0]);
         return (
           <div
             className="celebrity-hero-background"
-            style={{ "--img": `url(${profileImg})` }}
+            style={{ "--img": `url(${context.selectedCelebrity.profileImg})` }}
           >
             <Header />
-            <div className="heading-text">{name}</div>
-            <div className="handle-text">@{handle}</div>
-            <div className="followers-text">{followers}M followers</div>
-            <BiddingBlock highestBid={highestBid} timeLeft={timeLeft} />
+            <div className="heading-text">{context.selectedCelebrity.name}</div>
+            <div className="handle-text">
+              @{context.selectedCelebrity.handle}
+            </div>
+            <div className="followers-text">
+              {context.selectedCelebrity.followers}M followers
+            </div>
+            <BiddingBlock
+            // highestBid={context.selectedCelebrity.gallery[0].highestBid}
+            // timeLeft={context.selectedCelebrity.gallery[0].timeLeft}
+            />
           </div>
         );
       }}

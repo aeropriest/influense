@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     borderColor: "#fff",
     borderStyle: "solid",
-    width: "15vw",
+    width: "20vw",
     minHeight: "97vh",
     boxShadow: "none",
     blurEffect: "systemMaterialLight",
     marginLeft: "auto",
     marginRight: 0,
-    left: "84vw",
+    left: "79vw",
   },
   closeButton: {
     position: "absolute",
@@ -66,14 +66,14 @@ const CelebrityProfilesDialog = (props) => {
             open={CelebrityProfilesDialogOpen}
             classes={{ paper: classes.dialogWrapper2 }}
           >
-            {/* <ImageList
+            <ImageList
               rowHeight={80}
               cols={1}
               gap={8}
               className={classes.imageList}
               style={{ marginTop: "20px" }}
             >
-              {context.celebrities.map((celebrity) => (
+              {context.allCelebrities.map((celebrity) => (
                 <ImageListItem
                   key={celebrity.id}
                   style={{ with: "80px", height: "80px" }}
@@ -82,7 +82,7 @@ const CelebrityProfilesDialog = (props) => {
                   <img src={celebrity.profileImg} alt={celebrity.handle} />
                 </ImageListItem>
               ))}
-            </ImageList> */}
+            </ImageList>
             <IconButton
               aria-label="close"
               className={classes.closeButton}

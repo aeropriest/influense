@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchDialog = (props) => {
+const CelebritySearchDialog = (props) => {
   const { searchDialogOpen, setSearchDialogOpen } = props;
 
   const classes = useStyles();
@@ -98,7 +98,7 @@ const SearchDialog = (props) => {
                 placeHolder="search ramayana character"
                 handleChange={handleChange}
               />
-              {/* <ImageList
+              <ImageList
                 rowHeight={280}
                 cols={6}
                 gap={8}
@@ -110,20 +110,25 @@ const SearchDialog = (props) => {
                   cols={6}
                   style={{ height: "auto" }}
                 ></ImageListItem>
-                {context.celebrities.map((cleb) => (
-                  <ImageListItem key={cleb.id}>
-                    <img src={cleb.profileImg} alt={cleb.handle} />
+                {context.allCelebrities.map((celebrity) => (
+                  <ImageListItem
+                    key={celebrity.id}
+                    onClick={() =>
+                      context.setSelectedCelebrityHandle(celebrity.handle)
+                    }
+                  >
+                    <img src={celebrity.profileImg} alt={celebrity.handle} />
                     <ImageListItemBar
                       style={{
                         backgroundColor: "#00000055",
                         height: "50px",
                         backdropFilter: "blur(3px)",
                       }}
-                      title={cleb.name}
-                      subtitle={<span>@{cleb.handle}</span>}
+                      title={celebrity.name}
+                      subtitle={<span>@{celebrity.handle}</span>}
                       actionIcon={
                         <IconButton
-                          aria-label={`info about ${cleb.handle}`}
+                          aria-label={`info about ${celebrity.handle}`}
                           className={classes.icon}
                         >
                           <InfoIcon />
@@ -132,7 +137,7 @@ const SearchDialog = (props) => {
                     />
                   </ImageListItem>
                 ))}
-              </ImageList> */}
+              </ImageList>
             </div>
           </Dialog>
         );
@@ -141,4 +146,4 @@ const SearchDialog = (props) => {
   );
 };
 
-export default SearchDialog;
+export default CelebritySearchDialog;
