@@ -17,6 +17,7 @@ class CelebritiesContextProvider extends Component {
       .collection(firebaseDatabaseName)
       .get()
       .then((celebritiesSnapshot) => {
+        //allCelebrities = celebritiesSnapshot.celebritySnapshots()
         celebritiesSnapshot.forEach((celebrity) => {
           this.setState((prevState) => ({
             allCelebrities: [...prevState.allCelebrities, celebrity.data()],
@@ -28,41 +29,49 @@ class CelebritiesContextProvider extends Component {
       });
   }
 
-  setSelectedCelebrityHandle = async (celebrityHandle) => {
+  setSelectedCelebrityHandle = (celebrityHandle) => {
     console.log("-------- setSelectedCelebrityHandle ------------");
-    this.setState({ selectedCelebrityHandle: celebrityHandle });
+    //this.setState({ selectedCelebrityHandle: celebrityHandle });
     //console.log(" setSelectedCelebrityHandle to  ", celebrityHandle);
     let images = [];
-    await firebaseContext
+    firebaseContext
       .collection(firebaseDatabaseName)
       .where("handle", "==", celebrityHandle)
       .get()
       .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          doc.ref
+        snapshot.forEach((celebritySnapshot) => {
+          celebritySnapshot.ref
             .collection("gallery")
             .get()
             .then((gallarySnapshot) => {
               gallarySnapshot.forEach((image) => {
                 images.push(image.data());
               });
+
+              const celebrity = {
+                handle: celebritySnapshot.data().handle,
+                name: celebritySnapshot.data().name,
+                followers: celebritySnapshot.data().follwers,
+                profileImg: celebritySnapshot.data().profileImg,
+                id: celebritySnapshot.id,
+                gallery: images,
+              };
+              this.setState(
+                {
+                  isCelebritySelected: true,
+                  selectedCelebrity: celebrity,
+                  selectedCelebrityHandle: celebrityHandle,
+                },
+                () => {
+                  console.log("from celebrity contet");
+                  console.log(this.state.selectedCelebrity);
+                }
+              );
             });
 
           //better use something like this
-          //this.setState({ currentCelebrity: doc.data() });
+          //this.setState({ currentCelebrity: celebritySnapshot.data() });
           //this.currentCelebrity.images = [...images, image.data()];
-
-          const celebrity = {
-            handle: doc.data().handle,
-            name: doc.data().name,
-            followers: doc.data().follwers,
-            profileImg: doc.data().profileImg,
-            id: doc.id,
-            gallery: images,
-          };
-          this.setState({ isCelebritySelected: true });
-          this.setState({ selectedCelebrity: celebrity });
-          //console.log(this.state.selectedCelebrity);
         });
       });
   };
@@ -77,7 +86,6 @@ class CelebritiesContextProvider extends Component {
       <CelebritiesContext.Provider
         value={{
           ...this.state,
-          setSelectedCelebrity: this.setSelectedCelebrity,
           setSelectedCelebrityHandle: this.setSelectedCelebrityHandle,
         }}
       >
