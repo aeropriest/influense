@@ -3,8 +3,11 @@ import CloseIcon from "@material-ui/icons/Cancel";
 import IconButton from "@material-ui/core/IconButton";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
-
-import { CelebritiesContext } from "../context/celebrities.context";
+import firebaseContext, {
+  firebaseDatabaseName,
+} from "../context/firebase.context";
+import { CurentCelebrityContext } from "../context/current.celebrity.context";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   imageList: {
@@ -49,6 +52,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CelebrityProfilesDialog = (props) => {
+  const [celebrities, setCelebrities] = useState([]);
+  useEffect(() => {
+    firebaseContext
+      .collection(firebaseDatabaseName)
+      .get()
+      .then((celebritiesSnapshot) => {
+        celebritiesSnapshot.forEach((celebrity) => {
+          //setCelebrities({ ...celebrities, celebrity.data() });
+          let c = celebrity.data();
+          c["firebase_id"] = celebrity.id;
+          celebrities.push(c);
+        });
+      });
+  }, []);
   const { CelebrityProfilesDialogOpen, setCelebrityProfilesDialogOpen } = props;
   const classes = useStyles();
 
@@ -57,9 +74,12 @@ const CelebrityProfilesDialog = (props) => {
   };
 
   return (
-    <CelebritiesContext.Consumer>
+    <CurentCelebrityContext.Consumer>
       {(context) => {
-        const { setSelectedCelebrityHandle } = context;
+        if (!context.currentCelebrity && celebrities.length) {
+          context.setCurrentCelebrityHandle(celebrities[0].firebase_id);
+        }
+
         return (
           <Dialog
             onClose={handleClose}
@@ -73,11 +93,13 @@ const CelebrityProfilesDialog = (props) => {
               className={classes.imageList}
               style={{ marginTop: "20px" }}
             >
-              {context.allCelebrities.map((celebrity) => (
+              {celebrities.map((celebrity) => (
                 <ImageListItem
                   key={celebrity.id}
                   style={{ with: "80px", height: "80px" }}
-                  onClick={() => setSelectedCelebrityHandle(celebrity.handle)}
+                  onClick={() =>
+                    context.setCurrentCelebrityHandle(celebrity.firebase_id)
+                  }
                 >
                   <img src={celebrity.profileImg} alt={celebrity.handle} />
                 </ImageListItem>
@@ -93,7 +115,7 @@ const CelebrityProfilesDialog = (props) => {
           </Dialog>
         );
       }}
-    </CelebritiesContext.Consumer>
+    </CurentCelebrityContext.Consumer>
   );
 };
 
