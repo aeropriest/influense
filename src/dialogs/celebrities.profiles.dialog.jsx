@@ -59,10 +59,6 @@ const CelebrityProfilesDialog = (props) => {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        context.allCelebrities.map((image) => {
-          console.log("profile image props");
-          console.log(image);
-        });
         const { setSelectedCelebrityHandle } = context;
         return (
           <Dialog

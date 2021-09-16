@@ -47,14 +47,9 @@ export default function CelebrityImageList() {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
+        const { setSelectedCelebrityImage } = context;
         //case when contet has not loaded the firebase data
-        if (context.selectedCelebrity !== undefined) {
-          context.selectedCelebrity.gallery.map((image) => {
-            console.log("valid image", image);
-            return image;
-          });
-        }
-        if (context.selectedCelebrity !== undefined) {
+        if (context.selectedCelebrityHandle) {
           return (
             <div className="imageListContainer">
               <div className={classes.root}>
@@ -73,6 +68,9 @@ export default function CelebrityImageList() {
                         srcSet={`${celebrityImage.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         alt={celebrityImage.imageUrl}
                         loading="lazy"
+                        onClick={() =>
+                          setSelectedCelebrityImage(celebrityImage)
+                        }
                       />
                       <ImageListItemBar
                         style={{

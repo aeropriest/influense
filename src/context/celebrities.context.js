@@ -4,7 +4,7 @@ export const CelebritiesContext = createContext();
 
 class CelebritiesContextProvider extends Component {
   state = {
-    isCelebritySelected: false,
+    selectedCelebrityImage: {},
     selectedCelebrityHandle: "",
     selectedCelebrity: {},
     allCelebrities: [],
@@ -29,8 +29,25 @@ class CelebritiesContextProvider extends Component {
       });
   }
 
+  setSelectedCelebrityImage = (celebrityImage) => {
+    const imageRecord = `${firebaseDatabaseName}/${this.state.selectedCelebrity.id}/gallery`;
+    firebaseContext
+      .collection(imageRecord)
+      .where("id", "==", celebrityImage.id)
+      .get()
+      .then((data) => {
+        data.forEach((d) => {
+          console.log("record", d.data());
+          this.setState({ selectedCelebrityImage: d.data() }, () => {
+            console.log("imageset");
+          });
+        });
+      });
+  };
+
   setSelectedCelebrityHandle = (celebrityHandle) => {
     let images = [];
+    let selectedImage = {};
     firebaseContext
       .collection(firebaseDatabaseName)
       .where("handle", "==", celebrityHandle)
@@ -42,7 +59,16 @@ class CelebritiesContextProvider extends Component {
             .get()
             .then((gallarySnapshot) => {
               gallarySnapshot.forEach((image) => {
-                images.push(image.data());
+                let img = {
+                  firebaseId: image.id,
+                  created_at: image.data().created_at,
+                  highestBid: image.data().highestBid,
+                  id: image.data().id,
+                  imageUrl: image.data().imageUrl,
+                  nft_id: image.data().nft_id,
+                  timeLeft: image.data().timeLeft,
+                };
+                images.push(img);
               });
 
               const celebrity = {
@@ -58,10 +84,16 @@ class CelebritiesContextProvider extends Component {
                   isCelebritySelected: true,
                   selectedCelebrity: celebrity,
                   selectedCelebrityHandle: celebrityHandle,
+                  selectedImage: images[0],
                 },
                 () => {
-                  console.log("from celebrity contet");
-                  console.log(this.state.selectedCelebrity);
+                  //console.log("from celebrity contet");
+                  console.log(
+                    "selected celebrity now is",
+                    this.state.selectedCelebrity,
+                    "selected image is ",
+                    this.state.selectedImage
+                  );
                 }
               );
             });
@@ -73,17 +105,13 @@ class CelebritiesContextProvider extends Component {
       });
   };
 
-  setSelectedCelebrity = (celebrity) => {
-    console.log("-------- setSelectedCelebrity  ------------");
-    this.setState({ selectedCelebrity: celebrity });
-  };
-
   render() {
     return (
       <CelebritiesContext.Provider
         value={{
           ...this.state,
           setSelectedCelebrityHandle: this.setSelectedCelebrityHandle,
+          setSelectedCelebrityImage: this.setSelectedCelebrityImage,
         }}
       >
         {this.props.children}

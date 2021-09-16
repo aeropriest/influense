@@ -8,7 +8,14 @@ const HeroImageBackground = () => {
   return (
     <CelebritiesContext.Consumer>
       {(context) => {
-        //console.log(context.selectedCelebrity.gallery[0]);
+        console.log(
+          "current selected image is ",
+          context.selectedCelebrityImage
+        );
+        if (context.selectedCelebrityHandle) {
+          console.log("load the celebrity now", context.selectedCelebrityImage);
+        }
+
         return (
           <div
             className="celebrity-hero-background"
