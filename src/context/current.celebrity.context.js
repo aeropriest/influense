@@ -9,7 +9,9 @@ class CurentCelebrityContextProvider extends Component {
 
   setCurrentCelebrityImage = (image) => {
     console.log("setCurrentCelebrityImage", image);
+    this.setState({ currentImage: image });
   };
+
   setCurrentCelebrityHandle = (handle) => {
     console.log("setCurrentCelebrityHandle", handle);
     this.setState({ currentCelebrity: handle });

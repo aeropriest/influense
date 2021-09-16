@@ -80,7 +80,14 @@ class CelebrityImageList extends Component {
                 }}
               >
                 {this.state.images.map((celebrityImage) => (
-                  <ImageListItem key={celebrityImage.id}>
+                  <ImageListItem
+                    key={celebrityImage.id}
+                    onClick={() =>
+                      context.setCurrentCelebrityImage(
+                        celebrityImage.firebase_id
+                      )
+                    }
+                  >
                     <img
                       key={`${celebrityImage.firebase_id}`}
                       src={`${celebrityImage.imageUrl}`}

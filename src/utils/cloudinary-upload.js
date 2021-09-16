@@ -19,13 +19,20 @@ const network = bitcoin.networks.bitcoin; //use networks.testnet for testnet
 const path = `m/49'/0'/0'/0`; // Use m/49'/1'/0'/0 for testnet
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDSq9FRd-3yXhB8fTU95LDQoHWe4VEGKDA",
-  authDomain: "influense-64aa7.firebaseapp.com",
-  projectId: "influense-64aa7",
-  storageBucket: "influense-64aa7.appspot.com",
-  messagingSenderId: "393496835159",
-  appId: "1:393496835159:web:65c65906c56d98ac809f12",
-  measurementId: "G-5HBPWY0Q5M",
+  // apiKey: "AIzaSyDSq9FRd-3yXhB8fTU95LDQoHWe4VEGKDA",
+  // authDomain: "influense-64aa7.firebaseapp.com",
+  // projectId: "influense-64aa7",
+  // storageBucket: "influense-64aa7.appspot.com",
+  // messagingSenderId: "393496835159",
+  // appId: "1:393496835159:web:65c65906c56d98ac809f12",
+  // measurementId: "G-5HBPWY0Q5M",
+  apiKey: "AIzaSyA0S6kcAVaDQ5CHSwTj53cPIimnzX0VqOk",
+  authDomain: "biddify-co.firebaseapp.com",
+  projectId: "biddify-co",
+  storageBucket: "biddify-co.appspot.com",
+  messagingSenderId: "590608362082",
+  appId: "1:590608362082:web:3dfa902114c345eb4c7f3b",
+  measurementId: "G-C7QHJWRHZ5",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -134,7 +141,8 @@ const uploadPoster = (handle, clebrity_name, image_url, tags) => {
 //}
 //console.log(imageUrl)
 
-const start = "/Users/ashokjaiswal/Documents/assets/";
+//const start = "/Users/ashokjaiswal/Documents/assets/";
+const start = "/Users/homi/Documents/assets/";
 
 let l1 = fs.readdirSync(start, { withFileTypes: true });
 l1.forEach((l2) => {

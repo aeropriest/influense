@@ -1,4 +1,4 @@
-import Header from "../header/header-component";
+import HeaderComponent from "../header/header-component";
 import BiddingBlock from "../bidding-block/bidding-block.component";
 import firebaseContext, {
   firebaseDatabaseName,
@@ -9,7 +9,7 @@ import "./hero.image.background.styles.css";
 import { useState } from "react";
 
 const HeroImageBackground = () => {
-  const [celebrity, setCelebrity] = useState({});
+  const [celebrityImage, setCelebrityImage] = useState([]);
   return (
     <CurentCelebrityContext.Consumer>
       {(context) => {
@@ -23,25 +23,28 @@ const HeroImageBackground = () => {
             .get()
             .then((data) => {
               data.forEach((d) => {
-                console.log(d.data());
+                //console.log("loaded backgorund image", d.data());
+                //this.celebrityImage = d.data().secure_url;
+                celebrityImage.push(d.data());
               });
+              console.log(celebrityImage);
             });
         }
         return (
           <div
             className="celebrity-hero-background"
-            style={{ "--img": `url(${celebrity.profileImg})` }}
+            style={{ "--img": `url(${celebrityImage[0].secure_url})` }}
           >
-            <Header />
-            <div className="heading-text">{celebrity.name}</div>
+            <HeaderComponent />
+            {/* <div className="heading-text">{celebrity.name}</div>
             <div className="handle-text">@{celebrity.handle}</div>
             <div className="followers-text">
               {celebrity.followers}M followers
-            </div>
-            <BiddingBlock
+            </div> */}
+            {/* <BiddingBlock
             // highestBid={context.selectedCelebrity.gallery[0].highestBid}
             // timeLeft={context.selectedCelebrity.gallery[0].timeLeft}
-            />
+            /> */}
           </div>
         );
       }}

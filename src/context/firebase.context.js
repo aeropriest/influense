@@ -9,13 +9,20 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDSq9FRd-3yXhB8fTU95LDQoHWe4VEGKDA",
-  authDomain: "influense-64aa7.firebaseapp.com",
-  projectId: "influense-64aa7",
-  storageBucket: "influense-64aa7.appspot.com",
-  messagingSenderId: "393496835159",
-  appId: "1:393496835159:web:65c65906c56d98ac809f12",
-  measurementId: "G-5HBPWY0Q5M",
+  // apiKey: "AIzaSyDSq9FRd-3yXhB8fTU95LDQoHWe4VEGKDA",
+  // authDomain: "influense-64aa7.firebaseapp.com",
+  // projectId: "influense-64aa7",
+  // storageBucket: "influense-64aa7.appspot.com",
+  // messagingSenderId: "393496835159",
+  // appId: "1:393496835159:web:65c65906c56d98ac809f12",
+  // measurementId: "G-5HBPWY0Q5M",
+  apiKey: "AIzaSyA0S6kcAVaDQ5CHSwTj53cPIimnzX0VqOk",
+  authDomain: "biddify-co.firebaseapp.com",
+  projectId: "biddify-co",
+  storageBucket: "biddify-co.appspot.com",
+  messagingSenderId: "590608362082",
+  appId: "1:590608362082:web:3dfa902114c345eb4c7f3b",
+  measurementId: "G-C7QHJWRHZ5",
 };
 
 export const firebaseDatabaseName = "biddify";
