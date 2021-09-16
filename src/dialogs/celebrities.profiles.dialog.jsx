@@ -61,6 +61,7 @@ const CelebrityProfilesDialog = (props) => {
         celebritiesSnapshot.forEach((celebrity) => {
           //setCelebrities({ ...celebrities, celebrity.data() });
           let c = celebrity.data();
+          console.log("load profile", celebrity.data());
           c["firebase_id"] = celebrity.id;
           celebrities.push(c);
         });

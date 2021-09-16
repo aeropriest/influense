@@ -1,33 +1,42 @@
 import Header from "../header/header-component";
 import BiddingBlock from "../bidding-block/bidding-block.component";
-import { CelebritiesContext } from "../../context/celebrities.context";
+import firebaseContext, {
+  firebaseDatabaseName,
+} from "../../context/firebase.context";
+import { CurentCelebrityContext } from "../../context/current.celebrity.context";
 
 import "./hero.image.background.styles.css";
+import { useState } from "react";
 
 const HeroImageBackground = () => {
+  const [celebrity, setCelebrity] = useState({});
   return (
-    <CelebritiesContext.Consumer>
+    <CurentCelebrityContext.Consumer>
       {(context) => {
-        console.log(
-          "current selected image is ",
-          context.selectedCelebrityImage
-        );
-        if (context.selectedCelebrityHandle) {
-          console.log("load the celebrity now", context.selectedCelebrityImage);
-        }
+        console.log("HeroImageBackground", context);
+        if (context.currentCelebrity) {
+          const profileRecord = `${firebaseDatabaseName}/${context.currentCelebrity}`;
+          console.log("HeroImageBackground profileRecord", profileRecord);
 
+          firebaseContext
+            .collection(firebaseDatabaseName)
+            .get()
+            .then((data) => {
+              data.forEach((d) => {
+                console.log(d.data());
+              });
+            });
+        }
         return (
           <div
             className="celebrity-hero-background"
-            style={{ "--img": `url(${context.selectedCelebrity.profileImg})` }}
+            style={{ "--img": `url(${celebrity.profileImg})` }}
           >
             <Header />
-            <div className="heading-text">{context.selectedCelebrity.name}</div>
-            <div className="handle-text">
-              @{context.selectedCelebrity.handle}
-            </div>
+            <div className="heading-text">{celebrity.name}</div>
+            <div className="handle-text">@{celebrity.handle}</div>
             <div className="followers-text">
-              {context.selectedCelebrity.followers}M followers
+              {celebrity.followers}M followers
             </div>
             <BiddingBlock
             // highestBid={context.selectedCelebrity.gallery[0].highestBid}
@@ -36,7 +45,7 @@ const HeroImageBackground = () => {
           </div>
         );
       }}
-    </CelebritiesContext.Consumer>
+    </CurentCelebrityContext.Consumer>
   );
 };
 

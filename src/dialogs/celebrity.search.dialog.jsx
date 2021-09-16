@@ -6,7 +6,11 @@ import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
 import SearchBox from "../components/searchbox.component/searchbox.component";
-import { CelebritiesContext } from "../context/celebrities.context";
+import firebaseContext, {
+  firebaseDatabaseName,
+} from "../context/firebase.context";
+import { CurentCelebrityContext } from "../context/current.celebrity.context";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,6 +65,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CelebritySearchDialog = (props) => {
+  const [celebrities, setCelebrities] = useState([]);
+  useEffect(() => {
+    firebaseContext
+      .collection(firebaseDatabaseName)
+      .get()
+      .then((celebritiesSnapshot) => {
+        celebritiesSnapshot.forEach((celebrity) => {
+          //setCelebrities({ ...celebrities, celebrity.data() });
+          let c = celebrity.data();
+          c["firebase_id"] = celebrity.id;
+          celebrities.push(c);
+        });
+      });
+  }, []);
   const { searchDialogOpen, setSearchDialogOpen } = props;
 
   const classes = useStyles();
@@ -76,8 +94,12 @@ const CelebritySearchDialog = (props) => {
   };
 
   return (
-    <CelebritiesContext.Consumer>
+    <CurentCelebrityContext.Consumer>
       {(context) => {
+        if (!context.currentCelebrity && celebrities.length) {
+          context.setCurrentCelebrityHandle(celebrities[0].firebase_id);
+        }
+
         return (
           <Dialog
             onClose={handleClose}
@@ -110,7 +132,7 @@ const CelebritySearchDialog = (props) => {
                   cols={6}
                   style={{ height: "auto" }}
                 ></ImageListItem>
-                {context.allCelebrities.map((celebrity) => (
+                {celebrities.map((celebrity) => (
                   <ImageListItem
                     key={celebrity.id}
                     onClick={() =>
@@ -142,7 +164,7 @@ const CelebritySearchDialog = (props) => {
           </Dialog>
         );
       }}
-    </CelebritiesContext.Consumer>
+    </CurentCelebrityContext.Consumer>
   );
 };
 
